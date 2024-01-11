@@ -5,4 +5,9 @@
 package frc.robot;
 
 public final class RobotMap {
+    // Drive Train
+    public static final int DRIVE_LEFT_MASTER  = 0;
+    public static final int DRIVE_LEFT_FOLLOWER  = 0;
+    public static final int DRIVE_RIGHT_MASTER  = 0;
+    public static final int DRIVE_RIGHT_FOLLOWER  = 0;
 }
