@@ -68,6 +68,14 @@ public class DriveTrain extends SubsystemBase {
     }
 
     /**
+     * This function stops the motors of the Drive Train.
+     */
+    public void stopMotors() {
+      this.rightMaster.stopMotor();
+      this.leftMaster.stopMotor();
+    }
+
+    /**
      * This function gets the object of the DriveTrain system if exists, and if not it creates a new one.
      * @return The only object of the DriveTrain system.
      */
