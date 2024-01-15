@@ -14,4 +14,6 @@ public final class RobotMap {
     //shooter
     public static final int SHOOTER_CONVEYOR = 0;
     public static final int SHOOTER_RELEASER = 0;
+
+    public static final int JOYSTICK_CONTROLLER = 1;
 }
