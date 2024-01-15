@@ -10,4 +10,9 @@ public final class RobotMap {
     public static final int DRIVE_LEFT_FOLLOWER  = 0;
     public static final int DRIVE_RIGHT_MASTER  = 0;
     public static final int DRIVE_RIGHT_FOLLOWER  = 0;
+
+    // Intake
+    public static final int INTAKE_MASTER = 0;
+    public static final int INTAKE_FOLLOWER = 0;
+
 }
