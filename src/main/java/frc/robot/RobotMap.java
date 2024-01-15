@@ -11,9 +11,14 @@ public final class RobotMap {
     public static final int DRIVE_RIGHT_MASTER  = 0;
     public static final int DRIVE_RIGHT_FOLLOWER  = 0;
 
-    //shooter
+    // Shooter
     public static final int SHOOTER_CONVEYOR = 0;
     public static final int SHOOTER_RELEASER = 0;
-
+  
+    // Intake
+    public static final int INTAKE_MASTER = 0;
+    public static final int INTAKE_FOLLOWER = 0;
+    
+    // Buttons
     public static final int JOYSTICK_CONTROLLER = 1;
 }
