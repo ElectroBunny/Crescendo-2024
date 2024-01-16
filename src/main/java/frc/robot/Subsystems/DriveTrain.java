@@ -7,6 +7,8 @@ package frc.robot.Subsystems;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
@@ -20,6 +22,9 @@ public class DriveTrain extends SubsystemBase {
   private DifferentialDrive diffDrive;
 
   private static DriveTrain instance = null;
+
+  private Encoder rightEncoder;
+  private Encoder leftEncoder;
 
   /** Creates a new DriveTrain. */
   public DriveTrain() {
@@ -49,6 +54,9 @@ public class DriveTrain extends SubsystemBase {
     this.leftFollower.follow(this.leftMaster);
 
     this.diffDrive = new DifferentialDrive(this.leftMaster, this.rightMaster);
+
+    this.rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_CHANNEL_A, RobotMap.RIGHT_ENCODER_CHANNEL_B, true, EncodingType.k2X);
+    this.leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_CHANNEL_A, RobotMap.LEFT_ENCODER_CHANNEL_B, true, EncodingType.k2X);
   }
 
     /**

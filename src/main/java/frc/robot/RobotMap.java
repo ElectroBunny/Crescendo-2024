@@ -11,6 +11,12 @@ public final class RobotMap {
     public static final int DRIVE_RIGHT_MASTER  = 0;
     public static final int DRIVE_RIGHT_FOLLOWER  = 0;
 
+    public static final int RIGHT_ENCODER_CHANNEL_A = 0;
+    public static final int RIGHT_ENCODER_CHANNEL_B = 0;
+
+    public static final int LEFT_ENCODER_CHANNEL_A = 0;
+    public static final int LEFT_ENCODER_CHANNEL_B = 0;
+
     // Shooter
     public static final int SHOOTER_CONVEYOR = 0;
     public static final int SHOOTER_RELEASER = 0;
