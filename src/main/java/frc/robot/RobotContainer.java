@@ -3,26 +3,33 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+import frc.robot.Commands.ArcadeDrive;
 import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNotes;
 import frc.robot.Commands.ConveyNote;
+import frc.robot.Subsystems.DriveTrain;
 
 public class RobotContainer {
-  private final OI oi;
-
+  private final DriveTrain driveTrain;
+  
   public RobotContainer() {
-    oi = new OI();
+    driveTrain = DriveTrain.getInstance();
+
     configureButtonBindings();
   }
 
   private void configureButtonBindings() 
   {
-    oi.button1.whileTrue(new ConveyNote(0.8));
-    oi.button2.whileTrue(new ConveyNote(-0.8));
-    oi.button3.whileTrue(new CollectNotes(0.8));
-    oi.button4.whileTrue(new CollectNotes(-0.8));
+    driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4RightTriggerAxis(),
+    () -> OI.getPS4LeftTriggerAxis(), () -> OI.getPS4LeftX()));
 
-    oi.button5.whileTrue(new Climb(0.5));
-    oi.button6.whileTrue(new Climb(-0.5));
+    OI.button1.whileTrue(new ConveyNote(0.8));
+    OI.button2.whileTrue(new ConveyNote(-0.8));
+    
+    OI.button3.whileTrue(new CollectNotes(0.8));
+    OI.button4.whileTrue(new CollectNotes(-0.8));
+
+    OI.button5.whileTrue(new Climb(0.5));
+    OI.button6.whileTrue(new Climb(-0.5));
   }
 }

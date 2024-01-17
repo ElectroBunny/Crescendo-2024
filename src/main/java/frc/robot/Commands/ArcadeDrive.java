@@ -12,11 +12,13 @@ import frc.robot.Subsystems.DriveTrain;
 public class ArcadeDrive extends Command {
   private DriveTrain innerDrive;
 
-  private DoubleSupplier forwardSupplier, turnSupplier;
+  private DoubleSupplier forwardSupplier, backwardSupplier, turnSupplier;
 
-  public ArcadeDrive(DoubleSupplier forwardSupplier, DoubleSupplier turnSupplier) {
+  public ArcadeDrive(DoubleSupplier forwardSupplier, DoubleSupplier backwardSupplier,
+   DoubleSupplier turnSupplier) {
     // Saves the suppliers for the arcade drive
     this.forwardSupplier = forwardSupplier;
+    this.backwardSupplier = backwardSupplier;
     this.turnSupplier = turnSupplier;
 
     this.innerDrive = DriveTrain.getInstance();
@@ -28,7 +30,8 @@ public class ArcadeDrive extends Command {
 
   @Override
   public void execute() {
-    innerDrive.arcadeDrive(forwardSupplier.getAsDouble(), turnSupplier.getAsDouble());
+    innerDrive.arcadeDrive(forwardSupplier.getAsDouble() - backwardSupplier.getAsDouble(),
+     turnSupplier.getAsDouble());
   }
 
   @Override

@@ -23,7 +23,6 @@ public final class RobotMap {
     public static final int CLIMBER_CONTROLLER = 0;
 
     // Buttons
+    public static final int PS4_CONTROLLER = 0;
     public static final int JOYSTICK_CONTROLLER = 1;
-
-    
 }

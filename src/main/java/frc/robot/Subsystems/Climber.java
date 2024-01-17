@@ -13,10 +13,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class Climber extends SubsystemBase {
   private static Climber instance = null;
   private WPI_TalonSRX climberMotor;
-  /** Creates a new Climber. */
-  public Climber() {
-    this.climberMotor = new WPI_TalonSRX(RobotMap.CLIMBER_CONTROLLER);
 
+  public Climber() {
+    // Define climber controller
+    this.climberMotor = new WPI_TalonSRX(RobotMap.CLIMBER_CONTROLLER);
     this.climberMotor.configFactoryDefault();
 
     this.climberMotor.setInverted(false);
