@@ -14,4 +14,6 @@ public class OI
     public Joystick joystick_controller = new Joystick(RobotMap.JOYSTICK_CONTROLLER);
     public JoystickButton button1 = new JoystickButton(joystick_controller, 1);
     public JoystickButton button2 = new JoystickButton(joystick_controller, 2);
+    public JoystickButton button3 = new JoystickButton(joystick_controller, 3);
+    public JoystickButton button4 = new JoystickButton(joystick_controller, 4);
 }
