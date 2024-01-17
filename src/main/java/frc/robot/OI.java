@@ -16,4 +16,7 @@ public class OI
     public JoystickButton button2 = new JoystickButton(joystick_controller, 2);
     public JoystickButton button3 = new JoystickButton(joystick_controller, 3);
     public JoystickButton button4 = new JoystickButton(joystick_controller, 4);
+
+    public JoystickButton button5 = new JoystickButton(joystick_controller, 5);
+    public JoystickButton button6 = new JoystickButton(joystick_controller, 6);
 }

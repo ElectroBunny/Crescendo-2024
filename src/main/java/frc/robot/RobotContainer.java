@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNotes;
 import frc.robot.Commands.ConveyNote;
 
@@ -20,5 +21,8 @@ public class RobotContainer {
     oi.button2.whileTrue(new ConveyNote(-0.8));
     oi.button3.whileTrue(new CollectNotes(0.8));
     oi.button4.whileTrue(new CollectNotes(-0.8));
+
+    oi.button5.whileTrue(new Climb(0.5));
+    oi.button6.whileTrue(new Climb(-0.5));
   }
 }
