@@ -17,6 +17,9 @@ public final class RobotMap {
     public static final int LEFT_ENCODER_CHANNEL_A = 0;
     public static final int LEFT_ENCODER_CHANNEL_B = 0;
 
+    public static final double DRIVE_SHAFT_PERIMETER = 0;
+    public static final int TICKS_PER_PULSE = 2048;
+
     // Shooter
     public static final int SHOOTER_CONVEYOR = 0;
     public static final int SHOOTER_RELEASER = 0;
@@ -27,4 +30,6 @@ public final class RobotMap {
     
     // Buttons
     public static final int JOYSTICK_CONTROLLER = 1;
+
+    public static final double ROBOT_WIDTH = 0;
 }
