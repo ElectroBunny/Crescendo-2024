@@ -6,13 +6,18 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.util.ReplanningConfig;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -37,6 +42,9 @@ public class DriveTrain extends SubsystemBase {
 
   private Encoder leftEncoder;
   private Encoder rightEncoder;
+
+  private double leftSpeed;
+  private double rightSpeed;
 
   /** Creates a new DriveTrain. */
   public DriveTrain() {
@@ -87,6 +95,27 @@ public class DriveTrain extends SubsystemBase {
       gyro.getRotation2d(),
       leftEncoder.getDistance(), rightEncoder.getDistance(),
       new Pose2d(0, 0, new Rotation2d()));
+
+      // Creates the AutoBuilder
+      AutoBuilder.configureRamsete(
+                this::getPose2d,
+                this::resetPose,
+                this::getRobotSpeed,
+                this::drive, // Method that will drive the robot given ChassisSpeeds
+                new ReplanningConfig(), // Default path replanning config. See the API for the options here
+                () -> {
+                    // Boolean supplier that controls when the path will be mirrored for the red alliance
+                    // This will flip the path being followed to the red side of the field.
+                    // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+
+                    var alliance = DriverStation.getAlliance();
+                    if (alliance.isPresent()) {
+                        return alliance.get() == DriverStation.Alliance.Red;
+                    }
+                    return false;
+                },
+                this // Reference to this subsystem to set requirements
+        );
   }
 
     /**
@@ -111,6 +140,38 @@ public class DriveTrain extends SubsystemBase {
     public void stopMotors() {
       this.rightMaster.stopMotor();
       this.leftMaster.stopMotor();
+    }
+
+    private Pose2d getPose2d() {
+      return this.odometry.getPoseMeters();
+    }
+
+    private Rotation2d getRotation2d() {
+      return gyro.getRotation2d();
+    }
+
+    private void resetPose(Pose2d pose) {
+      this.odometry.resetPosition(getRotation2d(), getLeftDistance(), getRightDistance(), pose);
+    }
+
+    private double getLeftDistance() {
+      return leftEncoder.getDistance();
+    }
+
+    private double getRightDistance() {
+      return rightEncoder.getDistance();
+    }
+
+    private DifferentialDriveWheelSpeeds getSidesSpeeds() {
+      return new DifferentialDriveWheelSpeeds(leftSpeed, rightSpeed);
+    }
+
+    private ChassisSpeeds getRobotSpeed() {
+      return this.kinematics.toChassisSpeeds(getSidesSpeeds());
+    }
+
+    private void drive(ChassisSpeeds speed) {
+      // To-do
     }
 
     /**
