@@ -3,6 +3,11 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+import com.pathplanner.lib.auto.AutoBuilder;
+
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Commands.ArcadeDrive;
 import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNotes;
@@ -12,10 +17,15 @@ import frc.robot.Subsystems.DriveTrain;
 public class RobotContainer {
   private final DriveTrain driveTrain;
   
+  private final SendableChooser<Command> autoChooser;
+  
   public RobotContainer() {
     driveTrain = DriveTrain.getInstance();
 
     configureButtonBindings();
+
+    autoChooser = AutoBuilder.buildAutoChooser("Default auto");
+    SmartDashboard.putData("Auto Chooser", autoChooser);
   }
 
   private void configureButtonBindings() 
@@ -32,4 +42,8 @@ public class RobotContainer {
     OI.button5.whileTrue(new Climb(0.5));
     OI.button6.whileTrue(new Climb(-0.5));
   }
+
+  public Command getAutonomousCommand() {
+    return autoChooser.getSelected();
+}
 }
