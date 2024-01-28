@@ -5,23 +5,21 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Shooter;
+import frc.robot.Subsystems.Climber;
 
-
-public class ReleaseNote extends Command {
-
-  private Shooter myShooter;
+public class Climb extends Command {
   private double speed;
-
-  public ReleaseNote(double power) {
-    this.speed = power;
-    this.myShooter = Shooter.getInstance();
-    addRequirements(myShooter);
+  private Climber myClimber;
+  
+  public Climb(double speed) {
+    this.speed = speed;
+    this.myClimber = Climber.getInstance();
+    addRequirements(myClimber);
   }
 
   @Override
   public void initialize() {
-    this.myShooter.moveReleaser(speed);
+    this.myClimber.moveClimber(speed);
   }
 
   @Override
@@ -29,7 +27,7 @@ public class ReleaseNote extends Command {
 
   @Override
   public void end(boolean interrupted) {
-    this.myShooter.stopReleaser();
+    this.myClimber.stopClimber();
   }
 
   @Override
