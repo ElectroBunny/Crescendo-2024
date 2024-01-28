@@ -20,6 +20,8 @@ public final class RobotMap {
     public static final double DRIVE_SHAFT_PERIMETER = 0;
     public static final int TICKS_PER_PULSE = 2048;
 
+    public static final double DRIVE_MOTORS_KV = 0;
+
     // Shooter
     public static final int SHOOTER_CONVEYOR = 0;
     public static final int SHOOTER_RELEASER = 0;

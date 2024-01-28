@@ -43,6 +43,8 @@ public class DriveTrain extends SubsystemBase {
   private Encoder leftEncoder;
   private Encoder rightEncoder;
 
+  private DifferentialDriveWheelSpeeds wheelSpeeds;
+
   private double leftSpeed;
   private double rightSpeed;
 
@@ -102,7 +104,7 @@ public class DriveTrain extends SubsystemBase {
                 this::resetPose,
                 this::getRobotSpeed,
                 this::drive, // Method that will drive the robot given ChassisSpeeds
-                new ReplanningConfig(), // Default path replanning config. See the API for the options here
+                new ReplanningConfig(),
                 () -> {
                     // Boolean supplier that controls when the path will be mirrored for the red alliance
                     // This will flip the path being followed to the red side of the field.
@@ -163,7 +165,7 @@ public class DriveTrain extends SubsystemBase {
     }
 
     private DifferentialDriveWheelSpeeds getSidesSpeeds() {
-      return new DifferentialDriveWheelSpeeds(leftSpeed, rightSpeed);
+      return new DifferentialDriveWheelSpeeds(leftEncoder.getRate(), rightEncoder.getRate());
     }
 
     private ChassisSpeeds getRobotSpeed() {
@@ -171,7 +173,13 @@ public class DriveTrain extends SubsystemBase {
     }
 
     private void drive(ChassisSpeeds speed) {
-      // To-do
+      this.wheelSpeeds = this.kinematics.toWheelSpeeds(speed);
+
+      this.rightSpeed = wheelSpeeds.rightMetersPerSecond;
+      this.leftSpeed = wheelSpeeds.leftMetersPerSecond;
+
+      this.rightMaster.set(rightSpeed * RobotMap.DRIVE_MOTORS_KV);
+      this.leftMaster.set(leftSpeed * RobotMap.DRIVE_MOTORS_KV);
     }
 
     /**
