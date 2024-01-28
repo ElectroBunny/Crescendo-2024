@@ -6,8 +6,22 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
@@ -20,6 +34,19 @@ public class DriveTrain extends SubsystemBase {
   private DifferentialDrive diffDrive;
 
   private static DriveTrain instance = null;
+  private ADXRS450_Gyro gyro;
+
+  private DifferentialDriveKinematics kinematics;
+
+  private DifferentialDriveOdometry odometry;
+
+  private Encoder leftEncoder;
+  private Encoder rightEncoder;
+
+  private DifferentialDriveWheelSpeeds wheelSpeeds;
+
+  private double leftSpeed;
+  private double rightSpeed;
 
   /** Creates a new DriveTrain. */
   public DriveTrain() {
@@ -49,6 +76,48 @@ public class DriveTrain extends SubsystemBase {
     this.leftFollower.follow(this.leftMaster);
 
     this.diffDrive = new DifferentialDrive(this.leftMaster, this.rightMaster);
+
+    // Creates the gyro
+    this.gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
+    this.gyro.calibrate();
+
+    // Creates the encoders
+    this.rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_CHANNEL_A, RobotMap.RIGHT_ENCODER_CHANNEL_B, true, EncodingType.k2X);
+    this.rightEncoder.setDistancePerPulse(RobotMap.DRIVE_SHAFT_PERIMETER / RobotMap.TICKS_PER_PULSE);
+    this.rightEncoder.reset();
+
+    this.leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_CHANNEL_A, RobotMap.LEFT_ENCODER_CHANNEL_B, false, EncodingType.k2X);
+    this.leftEncoder.setDistancePerPulse(RobotMap.DRIVE_SHAFT_PERIMETER / RobotMap.TICKS_PER_PULSE);
+    this.leftEncoder.reset();
+
+    this.kinematics = new DifferentialDriveKinematics(RobotMap.ROBOT_WIDTH);
+
+    // Creates the odometry
+    this.odometry = new DifferentialDriveOdometry(
+      gyro.getRotation2d(),
+      leftEncoder.getDistance(), rightEncoder.getDistance(),
+      new Pose2d(0, 0, new Rotation2d()));
+
+      // Creates the AutoBuilder
+      AutoBuilder.configureRamsete(
+                this::getPose2d,
+                this::resetPose,
+                this::getRobotSpeed,
+                this::drive, // Method that will drive the robot given ChassisSpeeds
+                new ReplanningConfig(),
+                () -> {
+                    // Boolean supplier that controls when the path will be mirrored for the red alliance
+                    // This will flip the path being followed to the red side of the field.
+                    // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+
+                    var alliance = DriverStation.getAlliance();
+                    if (alliance.isPresent()) {
+                        return alliance.get() == DriverStation.Alliance.Red;
+                    }
+                    return false;
+                },
+                this // Reference to this subsystem to set requirements
+        );
   }
 
     /**
@@ -58,10 +127,10 @@ public class DriveTrain extends SubsystemBase {
      */
     public void arcadeDrive(double forward, double turn){
       // Deadband
-      if(Math.abs(forward) < 0.2)
+      if(Math.abs(forward) < 0.05)
         forward = 0.0;
   
-      if(Math.abs(turn) < 0.2)
+      if(Math.abs(turn) < 0.05)
         turn = 0.0;
       
       this.diffDrive.arcadeDrive(forward, turn);
@@ -73,6 +142,44 @@ public class DriveTrain extends SubsystemBase {
     public void stopMotors() {
       this.rightMaster.stopMotor();
       this.leftMaster.stopMotor();
+    }
+
+    private Pose2d getPose2d() {
+      return this.odometry.getPoseMeters();
+    }
+
+    private Rotation2d getRotation2d() {
+      return gyro.getRotation2d();
+    }
+
+    private void resetPose(Pose2d pose) {
+      this.odometry.resetPosition(getRotation2d(), getLeftDistance(), getRightDistance(), pose);
+    }
+
+    private double getLeftDistance() {
+      return leftEncoder.getDistance();
+    }
+
+    private double getRightDistance() {
+      return rightEncoder.getDistance();
+    }
+
+    private DifferentialDriveWheelSpeeds getSidesSpeeds() {
+      return new DifferentialDriveWheelSpeeds(leftEncoder.getRate(), rightEncoder.getRate());
+    }
+
+    private ChassisSpeeds getRobotSpeed() {
+      return this.kinematics.toChassisSpeeds(getSidesSpeeds());
+    }
+
+    private void drive(ChassisSpeeds speed) {
+      this.wheelSpeeds = this.kinematics.toWheelSpeeds(speed);
+
+      this.rightSpeed = wheelSpeeds.rightMetersPerSecond;
+      this.leftSpeed = wheelSpeeds.leftMetersPerSecond;
+
+      this.rightMaster.set(rightSpeed * RobotMap.DRIVE_MOTORS_KV);
+      this.leftMaster.set(leftSpeed * RobotMap.DRIVE_MOTORS_KV);
     }
 
     /**
@@ -88,6 +195,8 @@ public class DriveTrain extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Gyro", gyro.getAngle());
+
+    odometry.update(this.gyro.getRotation2d(), leftEncoder.getDistance(), rightEncoder.getDistance());
   }
 }
