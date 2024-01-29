@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.5,
+        "x": 0.51,
         "y": 7.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.8,
+        "x": 0.91,
         "y": 7.0
       },
       "isLocked": false,
@@ -21,7 +21,7 @@
       },
       "prevControl": {
         "x": 1.82,
-        "y": 6.7
+        "y": 7.1000000000000005
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,7 +32,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Amp Shoot",
+      "name": "ShootNote1",
       "waypointRelativePos": 1.0,
       "command": {
         "type": "parallel",
