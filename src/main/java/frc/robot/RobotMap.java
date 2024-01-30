@@ -24,6 +24,8 @@ public final class RobotMap {
 
     // Shooter
     public static final int SHOOTER_VICTOR = 0;
+
+    public static final int LIMIT_SWITCH_PORT = 0;
   
     // Intake
     public static final int INTAKE_VICTOR = 0;
