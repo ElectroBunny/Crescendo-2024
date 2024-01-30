@@ -5,21 +5,26 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Subsystems.Intake;
 import frc.robot.Subsystems.Shooter;
 
 public class ShootNote extends Command {
   private Shooter myShooter;
+  private Intake intake;
   private double speed;
 
   public ShootNote(double speed) {
     this.speed = speed;
     this.myShooter = Shooter.getInstance();
+    this.intake = Intake.getInstance();
     addRequirements(myShooter);
   }
 
   @Override
   public void initialize() {
-    this.myShooter.moveShooter(speed);
+    if(intake.hasGamePiece()) {
+      this.myShooter.moveShooter(speed);
+    }
   }
 
   @Override
