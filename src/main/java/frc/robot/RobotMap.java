@@ -23,12 +23,10 @@ public final class RobotMap {
     public static final double DRIVE_MOTORS_KV = 0;
 
     // Shooter
-    public static final int SHOOTER_CONVEYOR = 0;
-    public static final int SHOOTER_RELEASER = 0;
+    public static final int SHOOTER_VICTOR = 0;
   
     // Intake
-    public static final int INTAKE_MASTER = 0;
-    public static final int INTAKE_FOLLOWER = 0;
+    public static final int INTAKE_VICTOR = 0;
 
     // Climber
     public static final int CLIMBER_CONTROLLER = 0;

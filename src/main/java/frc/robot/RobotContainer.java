@@ -10,8 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Commands.ArcadeDrive;
 import frc.robot.Commands.Climb;
-import frc.robot.Commands.CollectNotes;
-import frc.robot.Commands.ConveyNote;
+import frc.robot.Commands.CollectNote;
 import frc.robot.Subsystems.DriveTrain;
 
 public class RobotContainer {
@@ -32,18 +31,15 @@ public class RobotContainer {
   {
     driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4RightTriggerAxis(),
     () -> OI.getPS4LeftTriggerAxis(), () -> OI.getPS4LeftX()));
-
-    OI.button1.whileTrue(new ConveyNote(0.8));
-    OI.button2.whileTrue(new ConveyNote(-0.8));
     
-    OI.button3.whileTrue(new CollectNotes(0.8));
-    OI.button4.whileTrue(new CollectNotes(-0.8));
+    OI.button1.whileTrue(new CollectNote(0.8));
+    OI.button2.whileTrue(new CollectNote(-0.8));
 
-    OI.button5.whileTrue(new Climb(0.5));
-    OI.button6.whileTrue(new Climb(-0.5));
+    OI.button3.whileTrue(new Climb(0.5));
+    OI.button4.whileTrue(new Climb(-0.5));
   }
 
   public Command getAutonomousCommand() {
     return autoChooser.getSelected();
-}
+  }
 }
