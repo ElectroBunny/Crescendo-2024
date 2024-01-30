@@ -9,6 +9,8 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Commands.ArcadeDrive;
 import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNote;
@@ -34,14 +36,21 @@ public class RobotContainer {
     driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4RightTriggerAxis(),
     () -> OI.getPS4LeftTriggerAxis(), () -> OI.getPS4LeftX()));
     
-    OI.button1.whileTrue(new CollectNote(0.8));
-    OI.button2.whileTrue(new CollectNote(-0.8));
+    OI.button1.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
+    OI.button2.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
 
-    OI.button3.whileTrue(new Climb(0.5));
-    OI.button4.whileTrue(new Climb(-0.5));
+    OI.button3.whileTrue(new Climb(RobotMap.CLIMBER_SPEED));
+    OI.button4.whileTrue(new Climb(-RobotMap.CLIMBER_SPEED));
 
-    OI.button5.whileTrue(new ShootNote(0.5));
-    OI.button6.whileTrue(new ShootNote(-0.5));
+    // Button for loading the shooter and conveying the note
+    OI.button5.whileTrue(Commands.sequence(
+      new ShootNote(RobotMap.SHOOTER_SPEED),
+      new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
+      new CollectNote(RobotMap.INTAKE_SPEED)
+    ));
+
+
+    OI.button6.whileTrue(new ShootNote(-RobotMap.SHOOTER_SPEED));
   }
 
   public Command getAutonomousCommand() {
