@@ -7,9 +7,7 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.Shooter;
 
-
 public class ShootNote extends Command {
-
   private Shooter myShooter;
   private double speed;
 
