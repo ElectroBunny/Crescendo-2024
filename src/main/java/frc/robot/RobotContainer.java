@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Commands.ArcadeDrive;
 import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNote;
+import frc.robot.Commands.ShootNote;
 import frc.robot.Subsystems.DriveTrain;
 
 public class RobotContainer {
@@ -37,6 +38,9 @@ public class RobotContainer {
 
     OI.button3.whileTrue(new Climb(0.5));
     OI.button4.whileTrue(new Climb(-0.5));
+
+    OI.button5.whileTrue(new ShootNote(0.5));
+    OI.button6.whileTrue(new ShootNote(-0.5));
   }
 
   public Command getAutonomousCommand() {

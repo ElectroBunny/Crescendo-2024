@@ -16,6 +16,8 @@ public class OI
     public static final JoystickButton button2 = new JoystickButton(joystick_controller, 2);
     public static final JoystickButton button3 = new JoystickButton(joystick_controller, 3);
     public static final JoystickButton button4 = new JoystickButton(joystick_controller, 4);
+    public static final JoystickButton button5 = new JoystickButton(joystick_controller, 5);
+    public static final JoystickButton button6 = new JoystickButton(joystick_controller, 6);
 
     // Definition of PS4 controller buttons
     public static final PS4Controller ps4Controller = new PS4Controller(RobotMap.PS4_CONTROLLER);
