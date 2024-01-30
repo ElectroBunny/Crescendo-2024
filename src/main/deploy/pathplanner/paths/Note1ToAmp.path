@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.28,
-        "y": 7.026252448494873
+        "x": 2.44,
+        "y": 7.03
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2799999999999998,
-        "y": 6.526252448494873
+        "x": 2.04,
+        "y": 7.03
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.85,
-        "y": 7.838952219257822
+        "x": 1.82,
+        "y": 7.7
       },
       "prevControl": {
-        "x": 1.7985633056479142,
-        "y": 6.563322199326103
+        "x": 1.82,
+        "y": 7.2
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,7 +32,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "New Event Marker",
+      "name": "ShootNote2",
       "waypointRelativePos": 1.0,
       "command": {
         "type": "parallel",
@@ -41,7 +41,7 @@
             {
               "type": "named",
               "data": {
-                "name": "ShootToAmp"
+                "name": "Amp Shoot"
               }
             }
           ]
@@ -63,5 +63,5 @@
   "reversed": false,
   "folder": null,
   "previewStartingState": null,
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.6739441950061846,
-        "y": 7.334872614607385
+        "x": 0.51,
+        "y": 7.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.124458975734994,
-        "y": 7.118838498328626
+        "x": 0.91,
+        "y": 7.0
       },
       "isLocked": false,
-      "linkedName": "Shoot"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.6040609524828078,
-        "y": 5.431714923580223
+        "x": 1.82,
+        "y": 7.7
       },
       "prevControl": {
-        "x": 1.007395297998617,
-        "y": 6.141541305639003
+        "x": 1.82,
+        "y": 7.1000000000000005
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,7 +30,25 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "ShootNote1",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Amp Shoot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -44,9 +62,6 @@
   },
   "reversed": false,
   "folder": null,
-  "previewStartingState": {
-    "rotation": 0,
-    "velocity": 0
-  },
-  "useDefaultConstraints": false
+  "previewStartingState": null,
+  "useDefaultConstraints": true
 }

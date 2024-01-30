@@ -11,52 +11,33 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Shooter extends SubsystemBase {
-  private WPI_VictorSPX conveyor;
-  private WPI_VictorSPX releaser;
+  private WPI_VictorSPX shootingVictor;
 
   private static Shooter instance = null;
 
-  public Shooter() 
+  public Shooter()
   {
-    this.conveyor = new WPI_VictorSPX(RobotMap.SHOOTER_CONVEYOR);
-    this.releaser = new WPI_VictorSPX(RobotMap.SHOOTER_RELEASER);
+    this.shootingVictor = new WPI_VictorSPX(RobotMap.SHOOTER_VICTOR);
 
-    this.conveyor.setNeutralMode(NeutralMode.Brake);
-    this.releaser.setNeutralMode(NeutralMode.Brake);
+    this.shootingVictor.setNeutralMode(NeutralMode.Brake);
   }
 
   /**
-   * This function moves the conveyor motor according to a given speed.
+   * This function moves the shooting motor according to a given speed.
    * @param gain The speed to move the motor in(between -1 to 1)
    */
-  public void moveConveyor(double gain)
+  public void moveShooter(double gain)
   {
-    this.conveyor.set(gain);
+    this.shootingVictor.set(gain);
   }
 
-  /**
-   * This function moves the releaser according to a given speed.
-   * @param gain The speed to move the motor in(between -1 to 1)
-   */
-  public void moveReleaser(double gain)
-  {
-    this.releaser.set(gain);
-  }
 
   /**
-   * This function stops the conveyor.
+   * This function stops the shooting motor.
    */
-  public void stopConveyor()
+  public void stopShooter()
   {
-    this.conveyor.stopMotor();
-  }
-
-  /**
-   * This function stops the releaser.
-   */
-  public void stopReleaser()
-  {
-    this.releaser.stopMotor();
+    this.shootingVictor.stopMotor();
   }
 
   /**

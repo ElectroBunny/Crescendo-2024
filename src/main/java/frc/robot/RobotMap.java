@@ -11,24 +11,22 @@ public final class RobotMap {
     public static final int DRIVE_RIGHT_MASTER  = 0;
     public static final int DRIVE_RIGHT_FOLLOWER  = 0;
 
-    public static final int RIGHT_ENCODER_CHANNEL_A = 0;
-    public static final int RIGHT_ENCODER_CHANNEL_B = 0;
+    public static final int RIGHT_ENCODER_CHANNEL_A = 1;
+    public static final int RIGHT_ENCODER_CHANNEL_B = 2;
 
-    public static final int LEFT_ENCODER_CHANNEL_A = 0;
-    public static final int LEFT_ENCODER_CHANNEL_B = 0;
+    public static final int LEFT_ENCODER_CHANNEL_A = 3;
+    public static final int LEFT_ENCODER_CHANNEL_B = 4;
 
-    public static final double DRIVE_SHAFT_PERIMETER = 0;
+    public static final double DRIVE_SHAFT_PERIMETER = 1;
     public static final int TICKS_PER_PULSE = 2048;
 
     public static final double DRIVE_MOTORS_KV = 0;
 
     // Shooter
-    public static final int SHOOTER_CONVEYOR = 0;
-    public static final int SHOOTER_RELEASER = 0;
+    public static final int SHOOTER_VICTOR = 0;
   
     // Intake
-    public static final int INTAKE_MASTER = 0;
-    public static final int INTAKE_FOLLOWER = 0;
+    public static final int INTAKE_VICTOR = 0;
 
     // Climber
     public static final int CLIMBER_CONTROLLER = 0;

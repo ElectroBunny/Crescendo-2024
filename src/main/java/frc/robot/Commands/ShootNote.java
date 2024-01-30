@@ -5,36 +5,31 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Intake;
+import frc.robot.Subsystems.Shooter;
 
-public class CollectNotes extends Command {
 
-  private Intake myIntake;
+public class ShootNote extends Command {
+
+  private Shooter myShooter;
   private double speed;
 
-  public CollectNotes(double speed) 
-  {
+  public ShootNote(double speed) {
     this.speed = speed;
-    this.myIntake = Intake.getInstance();
-    addRequirements(myIntake);
+    this.myShooter = Shooter.getInstance();
+    addRequirements(myShooter);
   }
 
   @Override
-  public void initialize() 
-  {
-    this.myIntake.moveIntake(speed);
+  public void initialize() {
+    this.myShooter.moveShooter(speed);
   }
 
   @Override
-  public void execute() 
-  {
-
-  }
+  public void execute() {}
 
   @Override
-  public void end(boolean interrupted)
-  {
-    this.myIntake.stopIntake();
+  public void end(boolean interrupted) {
+    this.myShooter.stopShooter();
   }
 
   @Override

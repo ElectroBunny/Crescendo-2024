@@ -10,20 +10,15 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
-
 public class Intake extends SubsystemBase {
-  private WPI_VictorSPX masterVictor;
-  private WPI_VictorSPX followerVictor;
+  private WPI_VictorSPX intakeVictor;
 
   private static Intake instance = null;
 
   public Intake() {
-    this.masterVictor = new WPI_VictorSPX(RobotMap.INTAKE_MASTER);
-    this.followerVictor = new WPI_VictorSPX(RobotMap.INTAKE_FOLLOWER);
+    this.intakeVictor = new WPI_VictorSPX(RobotMap.INTAKE_VICTOR);
 
-    this.followerVictor.follow(masterVictor); // setting the followerVictor to follow the masterVictor
-
-    this.masterVictor.setNeutralMode(NeutralMode.Brake);  // Check if works for both
+    this.intakeVictor.setNeutralMode(NeutralMode.Brake);
   }
 
   /**
@@ -32,7 +27,7 @@ public class Intake extends SubsystemBase {
    */
   public void moveIntake(double speed)
   {
-    masterVictor.set(speed);
+    intakeVictor.set(speed);
   }
 
 
@@ -41,7 +36,7 @@ public class Intake extends SubsystemBase {
    */
   public void stopIntake()
   {
-    masterVictor.stopMotor();
+    intakeVictor.stopMotor();
   }
 
   /**
