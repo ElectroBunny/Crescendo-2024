@@ -43,10 +43,11 @@ public class RobotContainer {
     OI.button4.whileTrue(new Climb(-RobotMap.CLIMBER_SPEED));
 
     // Button for loading the shooter and conveying the note
-    OI.button5.whileTrue(Commands.sequence(
-      new ShootNote(RobotMap.SHOOTER_SPEED),
+    OI.button5.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED).alongWith(
+      Commands.sequence(
       new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
       new CollectNote(RobotMap.INTAKE_SPEED)
+      )
     ));
 
 
