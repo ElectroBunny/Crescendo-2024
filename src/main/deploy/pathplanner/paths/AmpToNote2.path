@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.51,
-        "y": 7.0
+        "x": 1.82,
+        "y": 7.7
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.91,
-        "y": 7.0
+        "x": 1.82,
+        "y": 7.4
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.82,
-        "y": 7.7
+        "x": 1.75,
+        "y": 6.522172843849578
       },
       "prevControl": {
-        "x": 1.82,
-        "y": 7.1000000000000005
+        "x": 1.75,
+        "y": 7.022172843849578
+      },
+      "nextControl": {
+        "x": 1.75,
+        "y": 6.022172843849578
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.47,
+        "y": 5.55
+      },
+      "prevControl": {
+        "x": 1.9700000000000002,
+        "y": 5.55
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,8 +48,8 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "ShootNote1",
-      "waypointRelativePos": 1.0,
+      "name": "CollectNote2",
+      "waypointRelativePos": 2.0,
       "command": {
         "type": "parallel",
         "data": {
@@ -41,7 +57,7 @@
             {
               "type": "named",
               "data": {
-                "name": "ShootNote"
+                "name": "AutoCollectNote"
               }
             }
           ]
@@ -60,7 +76,7 @@
     "rotation": 0,
     "rotateFast": false
   },
-  "reversed": false,
+  "reversed": true,
   "folder": "Start1Paths",
   "previewStartingState": null,
   "useDefaultConstraints": true
