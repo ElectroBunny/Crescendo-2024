@@ -196,7 +196,14 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Gyro", gyro.getAngle());
-
+    SmartDashboard.putNumber("rightMaster Voltage", rightMaster.getBusVoltage());//rightMaster motor vault gets
+    SmartDashboard.putNumber("rightMaster Current", rightMaster.getSupplyCurrent());//rightMaster motor current gets
+    SmartDashboard.putNumber("leftMaster Voltage", leftMaster.getBusVoltage());//leftMaster motor vault gets
+    SmartDashboard.putNumber("leftMaster Current", leftMaster.getSupplyCurrent());//leftMaster motor current gets
+    SmartDashboard.putNumber("rightFollower Voltage", rightFollower.getBusVoltage());//rightFollower motor vault gets
+    SmartDashboard.putNumber("rightFollower Current", rightFollower.getSupplyCurrent());//rightFollower motor current gets
+    SmartDashboard.putNumber("leftFollower Voltage", leftFollower.getBusVoltage());//leftFollower motor vault gets
+    SmartDashboard.putNumber("leftFollower Current", leftFollower.getSupplyCurrent());//leftFollower motor current gets
     odometry.update(this.gyro.getRotation2d(), leftEncoder.getDistance(), rightEncoder.getDistance());
   }
 }
