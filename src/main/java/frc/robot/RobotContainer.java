@@ -33,7 +33,7 @@ public class RobotContainer {
     SmartDashboard.putData("Auto Chooser", autoChooser);
   }
 
-  public void LogInitialize()
+  public void logInitialize()
   {
     DataLogManager.start();
     DriverStation.startDataLog(DataLogManager.getLog());
