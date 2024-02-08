@@ -195,17 +195,17 @@ public class DriveTrain extends SubsystemBase {
 
     private void logMotors()
     {
-      SmartDashboard.putNumber("rightMaster Voltage", rightMaster.getBusVoltage());//rightMaster motor vault gets
-      SmartDashboard.putNumber("rightMaster Current", rightMaster.getSupplyCurrent());//rightMaster motor current gets
+      SmartDashboard.putNumber("RightMaster Voltage", rightMaster.getBusVoltage());//rightMaster motor vault gets
+      SmartDashboard.putNumber("RightMaster Current", rightMaster.getSupplyCurrent());//rightMaster motor current gets
 
-      SmartDashboard.putNumber("leftMaster Voltage", leftMaster.getBusVoltage());//leftMaster motor vault gets
-      SmartDashboard.putNumber("leftMaster Current", leftMaster.getSupplyCurrent());//leftMaster motor current gets
+      SmartDashboard.putNumber("LeftMaster Voltage", leftMaster.getBusVoltage());//leftMaster motor vault gets
+      SmartDashboard.putNumber("LeftMaster Current", leftMaster.getSupplyCurrent());//leftMaster motor current gets
 
-      SmartDashboard.putNumber("rightFollower Voltage", rightFollower.getBusVoltage());//rightFollower motor vault gets
-      SmartDashboard.putNumber("rightFollower Current", rightFollower.getSupplyCurrent());//rightFollower motor current gets
+      SmartDashboard.putNumber("RightFollower Voltage", rightFollower.getBusVoltage());//rightFollower motor vault gets
+      SmartDashboard.putNumber("RightFollower Current", rightFollower.getSupplyCurrent());//rightFollower motor current gets
 
-      SmartDashboard.putNumber("leftFollower Voltage", leftFollower.getBusVoltage());//leftFollower motor vault gets
-      SmartDashboard.putNumber("leftFollower Current", leftFollower.getSupplyCurrent());//leftFollower motor current gets
+      SmartDashboard.putNumber("LeftFollower Voltage", leftFollower.getBusVoltage());//leftFollower motor vault gets
+      SmartDashboard.putNumber("LeftFollower Current", leftFollower.getSupplyCurrent());//leftFollower motor current gets
     }
 
     private void logPosition()
@@ -214,11 +214,18 @@ public class DriveTrain extends SubsystemBase {
       SmartDashboard.putNumber("Y", this.odometry.getPoseMeters().getY()); // gets y position of robot
     }
     
+    private void logEncoder()
+    {
+      SmartDashboard.putNumber("Distance Right Encoder", getRightDistance()); // gets x position of robot
+      SmartDashboard.putNumber("Distance Left Encoder", getLeftDistance()); // gets x position of robot
+    }
+
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Gyro", gyro.getAngle());
     logMotors();
     logPosition();
+    logEncoder();
     odometry.update(this.gyro.getRotation2d(), leftEncoder.getDistance(), rightEncoder.getDistance());
   }
 }
