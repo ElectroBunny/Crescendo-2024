@@ -193,17 +193,32 @@ public class DriveTrain extends SubsystemBase {
       return instance;
     }
 
+    private void logMotors()
+    {
+      SmartDashboard.putNumber("rightMaster Voltage", rightMaster.getBusVoltage());//rightMaster motor vault gets
+      SmartDashboard.putNumber("rightMaster Current", rightMaster.getSupplyCurrent());//rightMaster motor current gets
+
+      SmartDashboard.putNumber("leftMaster Voltage", leftMaster.getBusVoltage());//leftMaster motor vault gets
+      SmartDashboard.putNumber("leftMaster Current", leftMaster.getSupplyCurrent());//leftMaster motor current gets
+
+      SmartDashboard.putNumber("rightFollower Voltage", rightFollower.getBusVoltage());//rightFollower motor vault gets
+      SmartDashboard.putNumber("rightFollower Current", rightFollower.getSupplyCurrent());//rightFollower motor current gets
+
+      SmartDashboard.putNumber("leftFollower Voltage", leftFollower.getBusVoltage());//leftFollower motor vault gets
+      SmartDashboard.putNumber("leftFollower Current", leftFollower.getSupplyCurrent());//leftFollower motor current gets
+    }
+
+    private void logPosition()
+    {
+      SmartDashboard.putNumber("X", this.odometry.getPoseMeters().getX()); // gets x position of robot
+      SmartDashboard.putNumber("Y", this.odometry.getPoseMeters().getY()); // gets y position of robot
+    }
+    
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Gyro", gyro.getAngle());
-    SmartDashboard.putNumber("rightMaster Voltage", rightMaster.getBusVoltage());//rightMaster motor vault gets
-    SmartDashboard.putNumber("rightMaster Current", rightMaster.getSupplyCurrent());//rightMaster motor current gets
-    SmartDashboard.putNumber("leftMaster Voltage", leftMaster.getBusVoltage());//leftMaster motor vault gets
-    SmartDashboard.putNumber("leftMaster Current", leftMaster.getSupplyCurrent());//leftMaster motor current gets
-    SmartDashboard.putNumber("rightFollower Voltage", rightFollower.getBusVoltage());//rightFollower motor vault gets
-    SmartDashboard.putNumber("rightFollower Current", rightFollower.getSupplyCurrent());//rightFollower motor current gets
-    SmartDashboard.putNumber("leftFollower Voltage", leftFollower.getBusVoltage());//leftFollower motor vault gets
-    SmartDashboard.putNumber("leftFollower Current", leftFollower.getSupplyCurrent());//leftFollower motor current gets
+    logMotors();
+    logPosition();
     odometry.update(this.gyro.getRotation2d(), leftEncoder.getDistance(), rightEncoder.getDistance());
   }
 }
