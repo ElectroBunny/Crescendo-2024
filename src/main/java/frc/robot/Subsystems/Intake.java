@@ -34,8 +34,8 @@ public class Intake extends SubsystemBase {
   public void moveIntake(double speed)
   {
     intakeVictor.set(speed);
-    SmartDashboard.putNumber("Intake Voltage", intakeVictor.getBusVoltage());//Intake motor vault gets
-    SmartDashboard.putNumber("Intake Current", intakeVictor.getSupplyCurrent());//Intake motor current gets
+    SmartDashboard.putNumber("Intake Voltage", intakeVictor.getBusVoltage());  //Intake motor volt gets
+    SmartDashboard.putNumber("Intake Current", intakeVictor.getSupplyCurrent());  //Intake motor current gets
   }
 
 
