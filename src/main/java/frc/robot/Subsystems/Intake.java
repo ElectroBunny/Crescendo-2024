@@ -5,21 +5,21 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Intake extends SubsystemBase {
-  private WPI_VictorSPX intakeVictor;
+  private WPI_TalonSRX intakeVictor;
 
   private DigitalInput limitSwitch;
 
   private static Intake instance = null;
 
   public Intake() {
-    this.intakeVictor = new WPI_VictorSPX(RobotMap.INTAKE_VICTOR);
+    this.intakeVictor = new WPI_TalonSRX(RobotMap.INTAKE_TALON);
 
     this.limitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH_PORT);
 
