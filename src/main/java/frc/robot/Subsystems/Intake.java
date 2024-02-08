@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
@@ -33,6 +34,8 @@ public class Intake extends SubsystemBase {
   public void moveIntake(double speed)
   {
     intakeVictor.set(speed);
+    SmartDashboard.putNumber("Intake Voltage", intakeVictor.getBusVoltage());  //Intake motor volt gets
+    SmartDashboard.putNumber("Intake Current", intakeVictor.getSupplyCurrent());  //Intake motor current gets
   }
 
 
@@ -59,6 +62,7 @@ public class Intake extends SubsystemBase {
   }
 
   public boolean hasGamePiece() {
+    SmartDashboard.putBoolean("LimitSwitch", this.limitSwitch.get());
     return this.limitSwitch.get();
   }
 
