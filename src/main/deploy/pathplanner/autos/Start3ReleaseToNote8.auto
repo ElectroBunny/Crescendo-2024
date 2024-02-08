@@ -1,0 +1,25 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start3ToMid3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Mid3ToNote8"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Start3Paths",
+  "choreoAuto": false
+}

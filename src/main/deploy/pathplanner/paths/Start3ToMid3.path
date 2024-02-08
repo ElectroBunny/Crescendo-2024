@@ -1,0 +1,67 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.51,
+        "y": 2.1
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.325425210092126,
+        "y": 2.081504068221406
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.0442883943411996,
+        "y": 1.903157691027162
+      },
+      "prevControl": {
+        "x": 2.869447324545677,
+        "y": 2.7364413080514622
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Start3MidPoint"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "ReleaseNote",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootNote"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "Start3Paths",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
+}
