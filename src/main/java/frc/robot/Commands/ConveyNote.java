@@ -5,24 +5,23 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Shooter;
+import frc.robot.Subsystems.Intake;
 
 public class ConveyNote extends Command {
+  private Intake intake;
+  private double speed;
 
-  private Shooter myShooter;
-  private double myPower;
-
-  public ConveyNote(double power) 
+  public ConveyNote(double speed) 
   {
-    this.myPower = power;
-    this.myShooter = Shooter.getInstance();
-    addRequirements(myShooter);
+    this.speed = speed;
+    this.intake = Intake.getInstance();
+    addRequirements(intake);
   }
 
   @Override
   public void initialize() 
   {
-    this.myShooter.moveConveyor(myPower);
+    this.intake.moveIntake(speed);
   }
 
   @Override
@@ -34,11 +33,11 @@ public class ConveyNote extends Command {
   @Override
   public void end(boolean interrupted)
   {
-    this.myShooter.stopConveyor();
+    this.intake.stopIntake();
   }
 
   @Override
   public boolean isFinished() {
-    return false;
+    return false;  // Convey no matter what
   }
 }

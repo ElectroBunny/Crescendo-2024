@@ -7,22 +7,21 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.Intake;
 
-public class CollectNotes extends Command {
-
-  private Intake myIntake;
+public class CollectNote extends Command {
+  private Intake intake;
   private double speed;
 
-  public CollectNotes(double speed) 
+  public CollectNote(double speed) 
   {
     this.speed = speed;
-    this.myIntake = Intake.getInstance();
-    addRequirements(myIntake);
+    this.intake = Intake.getInstance();
+    addRequirements(intake);
   }
 
   @Override
   public void initialize() 
   {
-    this.myIntake.moveIntake(speed);
+    this.intake.moveIntake(speed);
   }
 
   @Override
@@ -34,11 +33,11 @@ public class CollectNotes extends Command {
   @Override
   public void end(boolean interrupted)
   {
-    this.myIntake.stopIntake();
+    this.intake.stopIntake();
   }
 
   @Override
   public boolean isFinished() {
-    return false;
+    return intake.hasGamePiece();  // It will run until the note touches the switch
   }
 }

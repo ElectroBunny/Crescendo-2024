@@ -7,21 +7,19 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.Shooter;
 
-
-public class ReleaseNote extends Command {
-
+public class ShootNote extends Command {
   private Shooter myShooter;
   private double speed;
 
-  public ReleaseNote(double power) {
-    this.speed = power;
+  public ShootNote(double speed) {
+    this.speed = speed;
     this.myShooter = Shooter.getInstance();
     addRequirements(myShooter);
   }
 
   @Override
   public void initialize() {
-    this.myShooter.moveReleaser(speed);
+    this.myShooter.moveShooter(speed);
   }
 
   @Override
@@ -29,7 +27,7 @@ public class ReleaseNote extends Command {
 
   @Override
   public void end(boolean interrupted) {
-    this.myShooter.stopReleaser();
+    this.myShooter.stopShooter();
   }
 
   @Override
