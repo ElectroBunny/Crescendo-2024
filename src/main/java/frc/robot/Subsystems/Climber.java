@@ -31,8 +31,8 @@ public class Climber extends SubsystemBase {
   public void moveClimber(double gain)
   {
     this.climberMotor.set(gain);
-    SmartDashboard.putNumber("Climbe Voltage", climberMotor.getBusVoltage());//Climbe motor vault gets
-    SmartDashboard.putNumber("Climbe Current", climberMotor.getSupplyCurrent());//Climbe motor current gets
+    SmartDashboard.putNumber("Climber Voltage", climberMotor.getBusVoltage());  //Climber motor vault gets
+    SmartDashboard.putNumber("Climber Current", climberMotor.getSupplyCurrent());  //Climber motor current gets
   }
 
   /**
