@@ -8,9 +8,9 @@
     "Start2Paths"
   ],
   "autoFolders": [
-    "Start3Paths",
-    "Start1Paths",
-    "Start2Paths"
+    "Start1Autos",
+    "Start2Autos",
+    "Start3Autos"
   ],
   "defaultMaxVel": 2.0,
   "defaultMaxAccel": 2.0,

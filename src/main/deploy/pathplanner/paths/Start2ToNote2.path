@@ -77,7 +77,7 @@
     "rotation": 0,
     "rotateFast": false
   },
-  "reversed": false,
+  "reversed": true,
   "folder": "Start2Paths",
   "previewStartingState": null,
   "useDefaultConstraints": true

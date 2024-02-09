@@ -8,12 +8,18 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start1ToAmp"
+            "pathName": "Start2ToNote2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note2ToEnd2"
           }
         }
       ]
     }
   },
-  "folder": "Start1Paths",
+  "folder": "Start2Autos",
   "choreoAuto": false
 }
