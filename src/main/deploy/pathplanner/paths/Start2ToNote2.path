@@ -8,7 +8,7 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.17,
+        "x": 1.6700000000000002,
         "y": 5.55
       },
       "isLocked": false,
@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 4.87,
-        "y": 6.19
+        "x": 2.47,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 4.4369872981077805,
-        "y": 5.94
+        "x": 2.1797104816318074,
+        "y": 5.55
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Start2MidPoint"
+      "linkedName": "Note2CollectionPoint"
     }
   ],
   "rotationTargets": [],
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "ReleaseNote",
-      "waypointRelativePos": 1.0,
+      "waypointRelativePos": 0.0,
       "command": {
         "type": "parallel",
         "data": {
@@ -42,6 +42,23 @@
               "type": "named",
               "data": {
                 "name": "ShootNote"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CollectNote2",
+      "waypointRelativePos": 0.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "AutoCollectNote"
               }
             }
           ]
@@ -63,5 +80,5 @@
   "reversed": false,
   "folder": "Start2Paths",
   "previewStartingState": null,
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }
