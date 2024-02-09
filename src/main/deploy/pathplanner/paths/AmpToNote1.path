@@ -12,7 +12,7 @@
         "y": 7.2
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "AmpShootingPoint"
     },
     {
       "anchor": {
@@ -25,14 +25,14 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Note1CollectionPoint"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "CollectNote",
+      "name": "CollectNote1",
       "waypointRelativePos": 1.0,
       "command": {
         "type": "parallel",

@@ -50,7 +50,7 @@
     },
     {
       "name": "CollectNote2",
-      "waypointRelativePos": 0.6,
+      "waypointRelativePos": 1.0,
       "command": {
         "type": "parallel",
         "data": {

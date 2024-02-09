@@ -20,12 +20,12 @@
         "y": 7.7
       },
       "prevControl": {
-        "x": 1.82,
-        "y": 7.1000000000000005
+        "x": 1.846167978121472,
+        "y": 7.200685232622713
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "AmpShootingPoint"
     }
   ],
   "rotationTargets": [],
