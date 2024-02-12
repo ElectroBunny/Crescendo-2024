@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.51,
-        "y": 7.0
+        "x": 1.37,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.91,
-        "y": 7.0
+        "x": 3.17,
+        "y": 5.55
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.82,
-        "y": 7.7
+        "x": 4.87,
+        "y": 6.19
       },
       "prevControl": {
-        "x": 1.82,
-        "y": 7.1000000000000005
+        "x": 4.4369872981077805,
+        "y": 5.94
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,7 +32,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "ShootNote1",
+      "name": "ReleaseNote",
       "waypointRelativePos": 1.0,
       "command": {
         "type": "parallel",
@@ -61,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Start1Paths",
+  "folder": "Start2Paths",
   "previewStartingState": null,
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

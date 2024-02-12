@@ -23,15 +23,19 @@ public final class RobotMap {
     public static final double DRIVE_MOTORS_KV = 0;
 
     // Shooter
-    public static final int SHOOTER_VICTOR = 0;
+    public static final int SHOOTER_TALON = 0;
+    public static final double SHOOTER_SPEED = 0.5;
+    public static final double SHOOTER_LOADING_TIME = 1.5;
 
     public static final int LIMIT_SWITCH_PORT = 0;
   
     // Intake
-    public static final int INTAKE_VICTOR = 0;
+    public static final int INTAKE_TALON = 0;
+    public static final double INTAKE_SPEED = 0.5;
 
     // Climber
     public static final int CLIMBER_CONTROLLER = 0;
+    public static final double CLIMBER_SPEED = 0.7;
 
     // Buttons
     public static final int PS4_CONTROLLER = 0;

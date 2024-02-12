@@ -5,19 +5,20 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Shooter extends SubsystemBase {
-  private WPI_VictorSPX shootingVictor;
+  private WPI_TalonSRX shootingVictor;
 
   private static Shooter instance = null;
 
   public Shooter()
   {
-    this.shootingVictor = new WPI_VictorSPX(RobotMap.SHOOTER_VICTOR);
+    this.shootingVictor = new WPI_TalonSRX(RobotMap.SHOOTER_TALON);
 
     this.shootingVictor.setNeutralMode(NeutralMode.Brake);
   }
@@ -29,6 +30,8 @@ public class Shooter extends SubsystemBase {
   public void moveShooter(double gain)
   {
     this.shootingVictor.set(gain);
+    SmartDashboard.putNumber("Shooter Voltage", shootingVictor.getBusVoltage());//shooting motor vault gets
+    SmartDashboard.putNumber("Shooter Current", shootingVictor.getSupplyCurrent());//shooting motor current gets
   }
 
 
