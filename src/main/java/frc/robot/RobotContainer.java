@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -12,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Commands.ArcadeDrive;
+import frc.robot.Commands.AutoShootNote;
 import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNote;
 import frc.robot.Commands.ShootNote;
@@ -26,9 +28,20 @@ public class RobotContainer {
     driveTrain = DriveTrain.getInstance();
 
     configureButtonBindings();
+    registerAutoCommands();
 
     autoChooser = AutoBuilder.buildAutoChooser("Default auto");
     SmartDashboard.putData("Auto Chooser", autoChooser);
+  }
+
+  private void registerAutoCommands() {
+    NamedCommands.registerCommand("AutoCollectNote", new CollectNote(RobotMap.INTAKE_SPEED));
+    NamedCommands.registerCommand("AutoShootNote", new AutoShootNote(RobotMap.SHOOTER_SPEED).alongWith(
+      Commands.sequence(
+      new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
+      new CollectNote(RobotMap.INTAKE_SPEED)
+      )
+    ));
   }
 
   private void configureButtonBindings() 
