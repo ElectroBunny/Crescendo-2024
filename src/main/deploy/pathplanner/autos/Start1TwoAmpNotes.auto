@@ -26,18 +26,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AmpToNote2"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Note2ToAmp"
+            "pathName": "AmpToNotes4-5"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Start1Autos",
   "choreoAuto": false
 }

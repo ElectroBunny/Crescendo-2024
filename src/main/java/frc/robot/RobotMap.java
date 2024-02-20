@@ -41,5 +41,5 @@ public final class RobotMap {
     public static final int PS4_CONTROLLER = 0;
     public static final int JOYSTICK_CONTROLLER = 1;
 
-    public static final double ROBOT_WIDTH = 0;
+    public static final double ROBOT_WIDTH = 0;  // The distance between the wheels
 }
