@@ -34,6 +34,8 @@ public class RobotContainer {
 
     autoChooser = AutoBuilder.buildAutoChooser("Default auto");
     SmartDashboard.putData("Auto Chooser", autoChooser);
+    // add a boolen to the smart dashboard to choose between PS5 and XBOX controllers
+    SmartDashboard.putBoolean("PS5 Controller", true);
   }
 
   private void registerAutoCommands() {
@@ -53,8 +55,14 @@ public class RobotContainer {
 
   private void configureButtonBindings() 
   {
-    driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4RightTriggerAxis(),
-    () -> OI.getPS4LeftTriggerAxis(), () -> OI.getPS4LeftX()));
+    if(SmartDashboard.getBoolean("PS5 Controller", true)){
+      driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4RightTriggerAxis(),
+      () -> OI.getPS4LeftTriggerAxis(), () -> OI.getPS4LeftX()));
+    }
+    else{
+      driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getXBOXRightTriggerAxis(),
+      () -> OI.getXBOXLeftTriggerAxis(), () -> OI.getXBOXLeftX()));
+    }
     
     OI.button1.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
     OI.button2.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
