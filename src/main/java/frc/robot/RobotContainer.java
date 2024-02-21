@@ -18,7 +18,6 @@ import frc.robot.Commands.ArcadeDrive;
 import frc.robot.Commands.AutoShootNote;
 import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNote;
-import frc.robot.Commands.ConveyNote;
 import frc.robot.Commands.ShootNote;
 import frc.robot.Subsystems.DriveTrain;
 
@@ -44,7 +43,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("AutoShootNote", new AutoShootNote(RobotMap.SHOOTER_SPEED).alongWith(
       Commands.sequence(
       new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
-      new ConveyNote(RobotMap.INTAKE_SPEED)
+      new CollectNote(RobotMap.INTAKE_SPEED)
       )
     ));
   }
