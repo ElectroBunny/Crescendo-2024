@@ -21,6 +21,8 @@ public class OI
 
     // Definition of PS4 controller buttons
     public static final PS4Controller ps4Controller = new PS4Controller(RobotMap.PS4_CONTROLLER);
+    // definition of the XBOX controller
+    public static final Joystick xboxController = new Joystick(RobotMap.XBOX_CONTROLLER);
 
     /**
      * This function gets the value of the ps4 controller R2 trigger.
@@ -28,6 +30,14 @@ public class OI
      */
     public static double getPS4RightTriggerAxis(){
         return ps4Controller.getR2Axis();
+    }
+
+    /**
+     * This function gets the right trigger value of the xbox controller.
+     * @return The value of the right trigger of the xbox controller.
+     */
+    public static double getXBOXRightTriggerAxis(){
+        return xboxController.getRawAxis(3);
     }
 
     /**
@@ -39,10 +49,27 @@ public class OI
     }
 
     /**
+     * This function gets the left trigger value of the xbox controller.
+     * @return The value of the left trigger of the xbox controller.
+     */
+    public static double getXBOXLeftTriggerAxis(){
+        return xboxController.getRawAxis(2);
+    }
+
+    /**
      * This function gets the X axis from the left joystick of the ps4 controller.
      * @return The X value at the left joystick.
      */
     public static double getPS4LeftX(){
         return ps4Controller.getLeftX();
     }
+
+    /**
+     * This function gets the X axis from the left joystick of the XBOX controller.
+     * @return The X value at the left joystick.
+     */
+    public static double getXBOXLeftX(){
+        return xboxController.getRawAxis(0);
+    }   
+    
 }

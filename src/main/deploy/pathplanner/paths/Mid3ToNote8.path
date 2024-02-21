@@ -3,52 +3,34 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.51,
-        "y": 7.0
+        "x": 3.0442883943411996,
+        "y": 1.903157691027162
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.91,
-        "y": 7.0
+        "x": 3.188033532108734,
+        "y": 1.2180756993150805
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Start3MidPoint"
     },
     {
       "anchor": {
-        "x": 1.82,
-        "y": 7.7
+        "x": 7.488418786361383,
+        "y": 1.59
       },
       "prevControl": {
-        "x": 1.846167978121472,
-        "y": 7.200685232622713
+        "x": 6.788418786361383,
+        "y": 1.59
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AmpShootingPoint"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "ShootNote1",
-      "waypointRelativePos": 1.0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoShootNote"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 2.0,
@@ -60,8 +42,8 @@
     "rotation": 0,
     "rotateFast": false
   },
-  "reversed": false,
-  "folder": "Start1Paths",
+  "reversed": true,
+  "folder": "Start3Paths",
   "previewStartingState": null,
   "useDefaultConstraints": true
 }

@@ -5,21 +5,22 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Intake extends SubsystemBase {
-  private WPI_VictorSPX intakeVictor;
+  private WPI_TalonSRX intakeVictor;
 
   private DigitalInput limitSwitch;
 
   private static Intake instance = null;
 
   public Intake() {
-    this.intakeVictor = new WPI_VictorSPX(RobotMap.INTAKE_VICTOR);
+    this.intakeVictor = new WPI_TalonSRX(RobotMap.INTAKE_TALON);
 
     this.limitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH_PORT);
 
@@ -33,6 +34,8 @@ public class Intake extends SubsystemBase {
   public void moveIntake(double speed)
   {
     intakeVictor.set(speed);
+    SmartDashboard.putNumber("Intake Voltage", intakeVictor.getBusVoltage());  //Intake motor volt gets
+    SmartDashboard.putNumber("Intake Current", intakeVictor.getSupplyCurrent());  //Intake motor current gets
   }
 
 
@@ -59,6 +62,7 @@ public class Intake extends SubsystemBase {
   }
 
   public boolean hasGamePiece() {
+    SmartDashboard.putBoolean("LimitSwitch", this.limitSwitch.get());
     return this.limitSwitch.get();
   }
 

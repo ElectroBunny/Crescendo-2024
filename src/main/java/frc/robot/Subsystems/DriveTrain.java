@@ -193,10 +193,39 @@ public class DriveTrain extends SubsystemBase {
       return instance;
     }
 
+    private void logMotors()
+    {
+      SmartDashboard.putNumber("RightMaster Voltage", rightMaster.getBusVoltage());  //rightMaster motor volt gets
+      SmartDashboard.putNumber("RightMaster Current", rightMaster.getSupplyCurrent());  //rightMaster motor current gets
+
+      SmartDashboard.putNumber("LeftMaster Voltage", leftMaster.getBusVoltage());  //leftMaster motor volt gets
+      SmartDashboard.putNumber("LeftMaster Current", leftMaster.getSupplyCurrent());  //leftMaster motor current gets
+
+      SmartDashboard.putNumber("RightFollower Voltage", rightFollower.getBusVoltage());  //rightFollower motor volt gets
+      SmartDashboard.putNumber("RightFollower Current", rightFollower.getSupplyCurrent());  //rightFollower motor current gets
+
+      SmartDashboard.putNumber("LeftFollower Voltage", leftFollower.getBusVoltage());  //leftFollower motor volt gets
+      SmartDashboard.putNumber("LeftFollower Current", leftFollower.getSupplyCurrent());  //leftFollower motor current gets
+    }
+
+    private void logPosition()
+    {
+      SmartDashboard.putNumber("X", this.odometry.getPoseMeters().getX()); // gets x position of robot
+      SmartDashboard.putNumber("Y", this.odometry.getPoseMeters().getY()); // gets y position of robot
+    }
+    
+    private void logEncoder()
+    {
+      SmartDashboard.putNumber("Distance Right Encoder", getRightDistance());
+      SmartDashboard.putNumber("Distance Left Encoder", getLeftDistance());
+    }
+
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Gyro", gyro.getAngle());
-
     odometry.update(this.gyro.getRotation2d(), leftEncoder.getDistance(), rightEncoder.getDistance());
+    SmartDashboard.putNumber("Gyro", gyro.getAngle());
+    logMotors();
+    logPosition();
+    logEncoder();
   }
 }
