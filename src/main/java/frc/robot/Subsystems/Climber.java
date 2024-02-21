@@ -4,7 +4,7 @@
 
 package frc.robot.Subsystems;
 import frc.robot.RobotMap;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -31,6 +31,8 @@ public class Climber extends SubsystemBase {
   public void moveClimber(double gain)
   {
     this.climberMotor.set(gain);
+    SmartDashboard.putNumber("Climber Voltage", climberMotor.getBusVoltage());  //Climber motor vault gets
+    SmartDashboard.putNumber("Climber Current", climberMotor.getSupplyCurrent());  //Climber motor current gets
   }
 
   /**

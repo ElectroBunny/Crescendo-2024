@@ -6,38 +6,35 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.Intake;
+import frc.robot.Subsystems.Shooter;
 
-public class CollectNote extends Command {
+public class AutoShootNote extends Command {
+  private Shooter myShooter;
   private Intake intake;
   private double speed;
 
-  public CollectNote(double speed) 
-  {
+  public AutoShootNote(double speed) {
     this.speed = speed;
+    this.myShooter = Shooter.getInstance();
     this.intake = Intake.getInstance();
-    addRequirements(intake);
+    addRequirements(myShooter);
   }
 
   @Override
-  public void initialize() 
-  {
-    this.intake.moveIntake(speed);
+  public void initialize() {
+    this.myShooter.moveShooter(speed);
   }
 
   @Override
-  public void execute() 
-  {
-
-  }
+  public void execute() {}
 
   @Override
-  public void end(boolean interrupted)
-  {
-    this.intake.stopIntake();
+  public void end(boolean interrupted) {
+    this.myShooter.stopShooter();
   }
 
   @Override
   public boolean isFinished() {
-    return false;
+    return !intake.hasGamePiece();  // Runs until the note detaches the limit switch
   }
 }
