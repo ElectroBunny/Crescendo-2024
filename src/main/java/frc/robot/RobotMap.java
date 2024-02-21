@@ -6,10 +6,10 @@ package frc.robot;
 
 public final class RobotMap {
     // Drive Train
-    public static final int DRIVE_LEFT_MASTER  = 0;
-    public static final int DRIVE_LEFT_FOLLOWER  = 0;
-    public static final int DRIVE_RIGHT_MASTER  = 0;
-    public static final int DRIVE_RIGHT_FOLLOWER  = 0;
+    public static final int DRIVE_LEFT_MASTER  = 1;
+    public static final int DRIVE_LEFT_FOLLOWER  = 2;
+    public static final int DRIVE_RIGHT_MASTER  = 3;
+    public static final int DRIVE_RIGHT_FOLLOWER  = 4;
 
     public static final int RIGHT_ENCODER_CHANNEL_A = 1;
     public static final int RIGHT_ENCODER_CHANNEL_B = 2;
@@ -32,7 +32,6 @@ public final class RobotMap {
     // Intake
     public static final int INTAKE_TALON = 0;
     public static final double INTAKE_SPEED = 0.5;
-
     // Climber
     public static final int CLIMBER_CONTROLLER = 0;
     public static final double CLIMBER_SPEED = 0.7;
