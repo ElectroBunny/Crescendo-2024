@@ -17,8 +17,10 @@ public final class RobotMap {
     public static final int LEFT_ENCODER_CHANNEL_A = 3;
     public static final int LEFT_ENCODER_CHANNEL_B = 4;
 
-    public static final double DRIVE_SHAFT_PERIMETER = 1;
-    public static final int TICKS_PER_PULSE = 2048;
+    public static final double INCH_IN_CM = 2.54;
+    public static final double DRIVE_WHEEL_DIAMETER = 8 * INCH_IN_CM * 0.01;  // Saves in meters
+    public static final double DRIVE_WHEEL_PERIMETER = Math.PI * DRIVE_WHEEL_DIAMETER;
+    public static final int ENCODER_TICKS_PER_PULSE = 2048;
 
     public static final double DRIVE_MOTORS_KV = 0;
 
@@ -41,5 +43,5 @@ public final class RobotMap {
     public static final int PS4_CONTROLLER = 0;
     public static final int JOYSTICK_CONTROLLER = 1;
 
-    public static final double ROBOT_WIDTH = 0;  // The distance between the wheels
+    public static final double ROBOT_WIDTH = 0.58;  // The distance between the wheels
 }
