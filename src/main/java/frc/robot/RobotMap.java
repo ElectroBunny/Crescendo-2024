@@ -34,7 +34,6 @@ public final class RobotMap {
   
     // Intake
     public static final int INTAKE_TALON = 21;
-    public static final double INTAKE_SPEED = 0.5;
     public static final double AUTO_COLLECT_TIME = 2.5;
     public static final double INTAKE_SPEED = 1;
   
