@@ -82,11 +82,11 @@ public class DriveTrain extends SubsystemBase {
     this.gyro.calibrate();
 
     // Creates the encoders
-    this.rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_CHANNEL_A, RobotMap.RIGHT_ENCODER_CHANNEL_B, true, EncodingType.k2X);
+    this.rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_CHANNEL_A, RobotMap.RIGHT_ENCODER_CHANNEL_B, false, EncodingType.k2X);
     this.rightEncoder.setDistancePerPulse(RobotMap.DRIVE_SHAFT_PERIMETER / RobotMap.TICKS_PER_PULSE);
     this.rightEncoder.reset();
 
-    this.leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_CHANNEL_A, RobotMap.LEFT_ENCODER_CHANNEL_B, false, EncodingType.k2X);
+    this.leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_CHANNEL_A, RobotMap.LEFT_ENCODER_CHANNEL_B, true, EncodingType.k2X);
     this.leftEncoder.setDistancePerPulse(RobotMap.DRIVE_SHAFT_PERIMETER / RobotMap.TICKS_PER_PULSE);
     this.leftEncoder.reset();
 
