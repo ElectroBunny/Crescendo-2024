@@ -38,6 +38,6 @@ public class CollectNote extends Command {
 
   @Override
   public boolean isFinished() {
-    return intake.hasGamePiece();  // It will run until the note touches the switch
+    return false;
   }
 }

@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Commands.ArcadeDrive;
 import frc.robot.Commands.AutoShootNote;
-import frc.robot.Commands.Climb;
+// import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNote;
 import frc.robot.Commands.ShootNote;
 import frc.robot.Subsystems.DriveTrain;
@@ -34,6 +34,8 @@ public class RobotContainer {
 
     autoChooser = AutoBuilder.buildAutoChooser("Default auto");
     SmartDashboard.putData("Auto Chooser", autoChooser);
+    // add a boolen to the smart dashboard to choose between PS5 and XBOX controllers
+    SmartDashboard.putBoolean("PS5 Controller", true);
   }
 
   private void registerAutoCommands() {
@@ -56,25 +58,31 @@ public class RobotContainer {
 
   private void configureButtonBindings() 
   {
-    driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4RightTriggerAxis(),
-    () -> OI.getPS4LeftTriggerAxis(), () -> OI.getPS4LeftX()));
+    if(SmartDashboard.getBoolean("PS5 Controller", true)){
+      driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4RightTriggerAxis(),
+      () -> OI.getPS4LeftTriggerAxis(), () -> OI.getPS4LeftX()));
+    }
+    else{
+      driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getXBOXRightTriggerAxis(),
+      () -> OI.getXBOXLeftTriggerAxis(), () -> OI.getXBOXLeftX()));
+    }
     
-    OI.button1.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
-    OI.button2.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
-
-    OI.button3.whileTrue(new Climb(RobotMap.CLIMBER_SPEED));
-    OI.button4.whileTrue(new Climb(-RobotMap.CLIMBER_SPEED));
-
-    // // Button for loading the shooter and conveying the note
-    // OI.button5.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED).alongWith(
+    // Button for loading the shooter and conveying the note
+    // OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED).alongWith(
     //   Commands.sequence(
     //   new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
     //   new CollectNote(RobotMap.INTAKE_SPEED)
     //   )
     // ));
+    
+    OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED));
+    OI.button2.whileTrue(new ShootNote(RobotMap.REVERSED_SHOOTER_SPEED));
 
+    OI.button3.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
+    OI.button5.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
 
-    OI.button6.whileTrue(new ShootNote(-RobotMap.SHOOTER_SPEED));
+    // OI.button4.whileTrue(new Climb(RobotMap.CLIMBER_SPEED));
+    // OI.button6.whileTrue(new Climb(-RobotMap.CLIMBER_SPEED));
   }
 
   public Command getAutonomousCommand() {

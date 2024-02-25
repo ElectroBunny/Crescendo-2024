@@ -7,11 +7,11 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.Intake;
 
-public class ConveyNote extends Command {
+public class AutoCollectNote extends Command {
   private Intake intake;
   private double speed;
 
-  public ConveyNote(double speed) 
+  public AutoCollectNote(double speed) 
   {
     this.speed = speed;
     this.intake = Intake.getInstance();
@@ -38,6 +38,6 @@ public class ConveyNote extends Command {
 
   @Override
   public boolean isFinished() {
-    return false;  // Convey no matter what
+    return intake.hasGamePiece();  // It will run until the note touches the switch
   }
 }
