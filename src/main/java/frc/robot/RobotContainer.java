@@ -39,14 +39,17 @@ public class RobotContainer {
   }
 
   private void registerAutoCommands() {
-    NamedCommands.registerCommand("AutoCollectNote", new CollectNote(RobotMap.INTAKE_SPEED));
-    NamedCommands.registerCommand("AutoShootNote", new AutoShootNote(RobotMap.SHOOTER_SPEED).alongWith(
-      Commands.sequence(
-      new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
-      new CollectNote(RobotMap.INTAKE_SPEED)
-      )
-    ));
+    // Auto collect command
+    NamedCommands.registerCommand("AutoCollectNote", Commands.deadline(
+      new CollectNote(RobotMap.INTAKE_SPEED),
+      new WaitCommand(RobotMap.AUTO_COLLECT_TIME)));
+    
+    // Auto shoot command
+    NamedCommands.registerCommand("AutoShootNote", Commands.deadline(
+      new ShootNote(RobotMap.SHOOTER_SPEED),
+      new WaitCommand(RobotMap.AUTO_SHOOT_TIME)));
   }
+
   public void logInitialize()
   {
     DataLogManager.start();
@@ -71,7 +74,7 @@ public class RobotContainer {
     //   new CollectNote(RobotMap.INTAKE_SPEED)
     //   )
     // ));
-
+    
     OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED));
     OI.button2.whileTrue(new ShootNote(RobotMap.REVERSED_SHOOTER_SPEED));
 

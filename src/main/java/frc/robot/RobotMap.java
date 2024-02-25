@@ -17,8 +17,10 @@ public final class RobotMap {
     public static final int LEFT_ENCODER_CHANNEL_A = 7;
     public static final int LEFT_ENCODER_CHANNEL_B = 8;
 
-    public static final double DRIVE_SHAFT_PERIMETER = 1;
-    public static final int TICKS_PER_PULSE = 2048;
+    public static final double INCH_IN_CM = 2.54;
+    public static final double DRIVE_WHEEL_DIAMETER = 8 * INCH_IN_CM * 0.01;  // Saves in meters
+    public static final double DRIVE_WHEEL_PERIMETER = Math.PI * DRIVE_WHEEL_DIAMETER;
+    public static final int ENCODER_TICKS_PER_PULSE = 2048;
 
     public static final double DRIVE_MOTORS_KV = 0;
 
@@ -26,13 +28,16 @@ public final class RobotMap {
     public static final int SHOOTER_TALON = 20;
     public static final double SHOOTER_SPEED = -1;
     public static final double REVERSED_SHOOTER_SPEED = 0.75;
-    public static final double SHOOTER_LOADING_TIME = 1.5;
+    public static final double AUTO_SHOOT_TIME = 1.5;
 
     public static final int LIMIT_SWITCH_PORT = 0;
   
     // Intake
     public static final int INTAKE_TALON = 21;
+    public static final double INTAKE_SPEED = 0.5;
+    public static final double AUTO_COLLECT_TIME = 2.5;
     public static final double INTAKE_SPEED = 1;
+  
     // Climber
     public static final int CLIMBER_CONTROLLER = 0;
     public static final double CLIMBER_SPEED = 0.7;
@@ -42,5 +47,5 @@ public final class RobotMap {
     public static final int XBOX_CONTROLLER = 0;
     public static final int JOYSTICK_CONTROLLER = 1;
 
-    public static final double ROBOT_WIDTH = 0;  // The distance between the wheels
+    public static final double ROBOT_WIDTH = 0.58;  // The distance between the wheels
 }
