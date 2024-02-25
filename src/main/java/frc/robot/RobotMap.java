@@ -27,13 +27,14 @@ public final class RobotMap {
     // Shooter
     public static final int SHOOTER_TALON = 0;
     public static final double SHOOTER_SPEED = 0.5;
-    public static final double SHOOTER_LOADING_TIME = 1.5;
+    public static final double AUTO_SHOOT_TIME = 1.5;
 
     public static final int LIMIT_SWITCH_PORT = 0;
   
     // Intake
     public static final int INTAKE_TALON = 0;
     public static final double INTAKE_SPEED = 0.5;
+    public static final double AUTO_COLLECT_TIME = 2.5;
 
     // Climber
     public static final int CLIMBER_CONTROLLER = 0;
