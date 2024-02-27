@@ -39,7 +39,7 @@ public class RobotContainer {
     registerAutoCommands();
 
     autoChooser = AutoBuilder.buildAutoChooser("Default auto");
-    SmartDashboard.putData("Auto Chooser", autoChooser);
+    // SmartDashboard.putData("Auto Chooser", autoChooser);
   }
 
   private void registerAutoCommands() {
