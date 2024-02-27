@@ -76,8 +76,8 @@ public class RobotContainer {
     OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED));
     OI.button2.whileTrue(new ShootNote(RobotMap.REVERSED_SHOOTER_SPEED));
 
-    OI.button3.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
-    OI.button5.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
+    // OI.button3.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
+    // OI.button5.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
 
     OI.button6.onTrue(new InstantCommand(() -> driveTrain.resetPose(new Pose2d(0, 0, new Rotation2d(0)))));
 
