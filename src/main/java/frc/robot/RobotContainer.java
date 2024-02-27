@@ -31,9 +31,6 @@ public class RobotContainer {
   private final DriveTrain driveTrain;
   
   private final SendableChooser<Command> autoChooser;
-
-  private CvSink cvSink;
-  private CvSource outputStream;
   
   public RobotContainer() {
     driveTrain = DriveTrain.getInstance();
@@ -94,8 +91,8 @@ public class RobotContainer {
 
   public void startCamera(){
     CameraServer.startAutomaticCapture();
-    cvSink = CameraServer.getVideo();
-    outputStream = CameraServer.putVideo("Blur", 640, 480);
+    CvSink cvSink = CameraServer.getVideo();
+    CvSource outputStream = CameraServer.putVideo("Front Camera", 640, 480);
   }
 
   public void backupAutonomus() {
