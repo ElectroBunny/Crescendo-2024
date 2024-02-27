@@ -25,7 +25,10 @@ public class Robot extends TimedRobot {
   public void disabledPeriodic() {}
 
   @Override
-  public void autonomousInit() {}
+  public void autonomousInit() {
+    robotContainer.onAutoInit();
+    robotContainer.backupAutonomus();
+  }
 
   @Override
   public void autonomousPeriodic() {}

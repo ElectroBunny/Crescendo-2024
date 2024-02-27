@@ -152,7 +152,7 @@ public class DriveTrain extends SubsystemBase {
       return gyro.getRotation2d();
     }
 
-    private void resetPose(Pose2d pose) {
+    public void resetPose(Pose2d pose) {
       this.odometry.resetPosition(getRotation2d(), getLeftDistance(), getRightDistance(), pose);
     }
 
@@ -180,6 +180,11 @@ public class DriveTrain extends SubsystemBase {
 
       this.rightMaster.set(rightSpeed * RobotMap.DRIVE_MOTORS_KV);
       this.leftMaster.set(leftSpeed * RobotMap.DRIVE_MOTORS_KV);
+    }
+
+    public void resetEncoders() {
+      rightEncoder.reset();
+      leftEncoder.reset();
     }
 
     /**
@@ -216,8 +221,8 @@ public class DriveTrain extends SubsystemBase {
     
     private void logEncoder()
     {
-      SmartDashboard.putNumber("Distance Right Encoder", getRightDistance());
-      SmartDashboard.putNumber("Distance Left Encoder", getLeftDistance());
+      SmartDashboard.putNumber("Right Encoder", getRightDistance());
+      SmartDashboard.putNumber("Left Encoder", getLeftDistance());
     }
 
   @Override

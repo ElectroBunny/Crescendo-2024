@@ -31,7 +31,7 @@ public class ArcadeDrive extends Command {
   @Override
   public void execute() {
     innerDrive.arcadeDrive(forwardSupplier.getAsDouble() - backwardSupplier.getAsDouble(),
-     turnSupplier.getAsDouble());
+     turnSupplier.getAsDouble() * 0.8);
   }
 
   @Override

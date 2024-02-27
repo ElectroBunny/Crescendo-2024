@@ -6,10 +6,10 @@ package frc.robot;
 
 public final class RobotMap {
     // Drive Train
-    public static final int DRIVE_LEFT_MASTER  = 7;
-    public static final int DRIVE_LEFT_FOLLOWER  = 1;
-    public static final int DRIVE_RIGHT_MASTER  = 3;
-    public static final int DRIVE_RIGHT_FOLLOWER  = 2;
+    public static final int DRIVE_LEFT_MASTER  = 21;
+    public static final int DRIVE_LEFT_FOLLOWER  = 3;
+    public static final int DRIVE_RIGHT_MASTER  = 1;
+    public static final int DRIVE_RIGHT_FOLLOWER  = 7;
 
     public static final int RIGHT_ENCODER_CHANNEL_A = 1;
     public static final int RIGHT_ENCODER_CHANNEL_B = 2;
@@ -26,16 +26,16 @@ public final class RobotMap {
 
     // Shooter
     public static final int SHOOTER_TALON = 20;
-    public static final double SHOOTER_SPEED = -1;
-    public static final double REVERSED_SHOOTER_SPEED = 0.75;
+    public static final double REVERSED_SHOOTER_SPEED = -0.6;
+    public static final double SHOOTER_SPEED = 0.8;
     public static final double AUTO_SHOOT_TIME = 1.5;
 
     public static final int LIMIT_SWITCH_PORT = 0;
   
     // Intake
-    public static final int INTAKE_TALON = 21;
+    public static final int INTAKE_TALON = 0;
     public static final double AUTO_COLLECT_TIME = 2.5;
-    public static final double INTAKE_SPEED = 1;
+    public static final double INTAKE_SPEED = -0.8;
   
     // Climber
     public static final int CLIMBER_CONTROLLER = 0;
