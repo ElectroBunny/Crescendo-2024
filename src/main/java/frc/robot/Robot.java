@@ -11,7 +11,9 @@ public class Robot extends TimedRobot {
   private final RobotContainer robotContainer = new RobotContainer();
 
   @Override
-  public void robotInit() {}
+  public void robotInit() {
+    robotContainer.startCamera();
+  }
 
   @Override
   public void robotPeriodic() {

@@ -7,6 +7,9 @@ package frc.robot;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.CvSink;
+import edu.wpi.first.cscore.CvSource;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DataLogManager;
@@ -28,6 +31,9 @@ public class RobotContainer {
   private final DriveTrain driveTrain;
   
   private final SendableChooser<Command> autoChooser;
+
+  private CvSink cvSink;
+  private CvSource outputStream;
   
   public RobotContainer() {
     driveTrain = DriveTrain.getInstance();
@@ -37,8 +43,6 @@ public class RobotContainer {
 
     autoChooser = AutoBuilder.buildAutoChooser("Default auto");
     SmartDashboard.putData("Auto Chooser", autoChooser);
-    // add a boolen to the smart dashboard to choose between PS5 and XBOX controllers
-    SmartDashboard.putBoolean("PS5 Controller", true);
   }
 
   private void registerAutoCommands() {
@@ -86,6 +90,12 @@ public class RobotContainer {
 
   public void onAutoInit() {
     driveTrain.resetEncoders();
+  }
+
+  public void startCamera(){
+    CameraServer.startAutomaticCapture();
+    cvSink = CameraServer.getVideo();
+    outputStream = CameraServer.putVideo("Blur", 640, 480);
   }
 
   public void backupAutonomus() {
