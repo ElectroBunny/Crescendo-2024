@@ -66,10 +66,7 @@ public class DriveTrain extends SubsystemBase {
     this.leftMaster.setInverted(true);
     this.leftFollower.setInverted(true);  
 
-    this.rightMaster.setNeutralMode(NeutralMode.Brake);
-    this.rightFollower.setNeutralMode(NeutralMode.Brake);
-    this.leftMaster.setNeutralMode(NeutralMode.Brake);
-    this.leftFollower.setNeutralMode(NeutralMode.Brake);
+    setModeBrake();
 
     // Joining masters and followers motor controllers.
     this.rightFollower.follow(this.rightMaster);
@@ -223,6 +220,20 @@ public class DriveTrain extends SubsystemBase {
     {
       SmartDashboard.putNumber("Right Encoder", getRightDistance());
       SmartDashboard.putNumber("Left Encoder", getLeftDistance());
+    }
+
+    public void setModeBrake() {
+      this.rightMaster.setNeutralMode(NeutralMode.Brake);
+      this.rightFollower.setNeutralMode(NeutralMode.Brake);
+      this.leftMaster.setNeutralMode(NeutralMode.Brake);
+      this.leftFollower.setNeutralMode(NeutralMode.Brake);
+    }
+
+    public void setModeCoast() {
+      this.rightMaster.setNeutralMode(NeutralMode.Coast);
+      this.rightFollower.setNeutralMode(NeutralMode.Coast);
+      this.leftMaster.setNeutralMode(NeutralMode.Coast);
+      this.leftFollower.setNeutralMode(NeutralMode.Coast);
     }
 
   @Override

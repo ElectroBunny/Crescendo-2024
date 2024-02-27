@@ -89,6 +89,14 @@ public class RobotContainer {
     driveTrain.resetEncoders();
   }
 
+  public void onDisabledInit() {
+    driveTrain.setModeCoast();
+  }
+
+  public void onRobotInit() {
+    driveTrain.setModeBrake();
+  }
+
   public void startCamera(){
     CameraServer.startAutomaticCapture();
     CvSink cvSink = CameraServer.getVideo();
