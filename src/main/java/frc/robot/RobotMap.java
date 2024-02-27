@@ -46,5 +46,9 @@ public final class RobotMap {
     public static final int XBOX_CONTROLLER = 0;
     public static final int JOYSTICK_CONTROLLER = 1;
 
+    // Autonomus
     public static final double ROBOT_WIDTH = 0.58;  // The distance between the wheels
+    public static final double BACKUP_AUTO_DRIVE_TIME = 3;
+    public static final double BACKUTP_AUTO_DRIVE_SPEED = -0.5;
+    public static final double MAX_AUTO_TIME = 15;
 }

@@ -98,11 +98,12 @@ public class RobotContainer {
   public void backupAutonomus() {
     double startTime = Timer.getFPGATimestamp();
 
-    while (Timer.getFPGATimestamp() - startTime < 3){
-      driveTrain.arcadeDrive(-0.5
+    while ((Timer.getFPGATimestamp() - startTime) < RobotMap.BACKUP_AUTO_DRIVE_TIME){
+      driveTrain.arcadeDrive(RobotMap.BACKUTP_AUTO_DRIVE_SPEED
       , 0);
       
-      if(Timer.getFPGATimestamp() - startTime >= 15){ 
+      // For extra safety(to prevent qual 7)
+      if(Timer.getFPGATimestamp() - startTime >= RobotMap.MAX_AUTO_TIME){ 
         return;
       }
     }
