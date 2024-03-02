@@ -21,6 +21,9 @@ public class OI
 
     // Definition of PS4 controller buttons
     public static final PS4Controller ps4Controller = new PS4Controller(RobotMap.PS4_CONTROLLER);
+    public static final JoystickButton L1 = new JoystickButton(ps4Controller, 4);
+    public static final JoystickButton R1 = new JoystickButton(ps4Controller, 5);
+    
     // definition of the XBOX controller
     public static final Joystick xboxController = new Joystick(RobotMap.XBOX_CONTROLLER);
 

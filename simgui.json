@@ -1,6 +1,11 @@
 {
   "HALProvider": {
     "Other Devices": {
+      "Talon SRX[1]": {
+        "header": {
+          "open": true
+        }
+      },
       "Victor SPX[5]": {
         "header": {
           "open": true

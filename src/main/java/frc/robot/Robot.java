@@ -14,6 +14,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     robotContainer.onRobotInit();
     robotContainer.startCamera();
+    robotContainer.logInitialize();
   }
 
   @Override
