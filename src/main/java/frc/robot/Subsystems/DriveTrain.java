@@ -66,6 +66,11 @@ public class DriveTrain extends SubsystemBase {
     this.leftMaster.setInverted(true);
     this.leftFollower.setInverted(true);  
 
+    this.rightMaster.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
+    this.rightFollower.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
+    this.leftMaster.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
+    this.leftFollower.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT); 
+
     setModeBrake();
 
     // Joining masters and followers motor controllers.
@@ -197,16 +202,16 @@ public class DriveTrain extends SubsystemBase {
 
     private void logMotors()
     {
-      SmartDashboard.putNumber("RightMaster Voltage", rightMaster.getBusVoltage());  //rightMaster motor volt gets
+      SmartDashboard.putNumber("RightMaster Voltage", rightMaster.getMotorOutputVoltage());  //rightMaster motor volt gets
       SmartDashboard.putNumber("RightMaster Current", rightMaster.getSupplyCurrent());  //rightMaster motor current gets
 
-      SmartDashboard.putNumber("LeftMaster Voltage", leftMaster.getBusVoltage());  //leftMaster motor volt gets
+      SmartDashboard.putNumber("LeftMaster Voltage", leftMaster.getMotorOutputVoltage());  //leftMaster motor volt gets
       SmartDashboard.putNumber("LeftMaster Current", leftMaster.getSupplyCurrent());  //leftMaster motor current gets
 
-      SmartDashboard.putNumber("RightFollower Voltage", rightFollower.getBusVoltage());  //rightFollower motor volt gets
+      SmartDashboard.putNumber("RightFollower Voltage", rightFollower.getMotorOutputVoltage());  //rightFollower motor volt gets
       SmartDashboard.putNumber("RightFollower Current", rightFollower.getSupplyCurrent());  //rightFollower motor current gets
 
-      SmartDashboard.putNumber("LeftFollower Voltage", leftFollower.getBusVoltage());  //leftFollower motor volt gets
+      SmartDashboard.putNumber("LeftFollower Voltage", leftFollower.getMotorOutputVoltage());  //leftFollower motor volt gets
       SmartDashboard.putNumber("LeftFollower Current", leftFollower.getSupplyCurrent());  //leftFollower motor current gets
     }
 
@@ -235,6 +240,14 @@ public class DriveTrain extends SubsystemBase {
       this.leftMaster.setNeutralMode(NeutralMode.Coast);
       this.leftFollower.setNeutralMode(NeutralMode.Coast);
     }
+
+    public void driveRightSide(double speed) {
+      this.rightMaster.set(speed);
+    }
+    
+    public void driveLeftSide(double speed) {
+      this.leftMaster.set(speed);
+    } 
 
   @Override
   public void periodic() {

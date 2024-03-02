@@ -21,6 +21,7 @@ public class Shooter extends SubsystemBase {
     this.shootingVictor = new WPI_TalonSRX(RobotMap.SHOOTER_TALON);
 
     this.shootingVictor.setNeutralMode(NeutralMode.Brake);
+    // this.shootingVictor.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
   }
 
   /**
@@ -30,7 +31,7 @@ public class Shooter extends SubsystemBase {
   public void moveShooter(double gain)
   {
     this.shootingVictor.set(gain);
-    SmartDashboard.putNumber("Shooter Voltage", shootingVictor.getBusVoltage());//shooting motor vault gets
+    SmartDashboard.putNumber("Shooter Voltage", shootingVictor.getMotorOutputVoltage());//shooting motor vault gets
     SmartDashboard.putNumber("Shooter Current", shootingVictor.getSupplyCurrent());//shooting motor current gets
   }
 

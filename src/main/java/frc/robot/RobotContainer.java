@@ -24,6 +24,8 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Commands.ArcadeDrive;
 // import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNote;
+import frc.robot.Commands.DriveLeftSide;
+import frc.robot.Commands.DriveRightSide;
 import frc.robot.Commands.ShootNote;
 import frc.robot.Subsystems.DriveTrain;
 
@@ -64,6 +66,9 @@ public class RobotContainer {
   {
     driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4LeftTriggerAxis(),
     () -> OI.getPS4RightTriggerAxis(), () -> OI.getPS4LeftX()));
+
+    OI.L1.whileTrue(new DriveLeftSide());
+    OI.R1.whileTrue(new DriveRightSide());
     
     // Button for loading the shooter and conveying the note
     // OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED).alongWith(
@@ -73,13 +78,17 @@ public class RobotContainer {
     //   )
     // ));
     
-    OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED));
+    OI.button1.whileTrue(new ShootNote(RobotMap.BOOSTED_SHOOTER_SPEED));
     OI.button2.whileTrue(new ShootNote(RobotMap.REVERSED_SHOOTER_SPEED));
+    OI.button3.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED));
+
+    OI.button4.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
+    OI.button6.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
 
     // OI.button3.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
     // OI.button5.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
 
-    OI.button6.onTrue(new InstantCommand(() -> driveTrain.resetPose(new Pose2d(0, 0, new Rotation2d(0)))));
+    // OI.button6.onTrue(new InstantCommand(() -> driveTrain.resetPose(new Pose2d(0, 0, new Rotation2d(0)))));
 
     // OI.button4.whileTrue(new Climb(RobotMap.CLIMBER_SPEED));
     // OI.button6.whileTrue(new Climb(-RobotMap.CLIMBER_SPEED));
@@ -98,9 +107,7 @@ public class RobotContainer {
   }
 
   public void startCamera(){
-    CameraServer.startAutomaticCapture();
-    CvSink cvSink = CameraServer.getVideo();
-    CvSource outputStream = CameraServer.putVideo("Front Camera", 640, 480);
+    CameraServer.startAutomaticCapture().setResolution(170, 122);
   }
 
   public void backupAutonomus() {

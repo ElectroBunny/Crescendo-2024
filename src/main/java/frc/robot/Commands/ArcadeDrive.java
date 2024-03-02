@@ -6,6 +6,7 @@ package frc.robot.Commands;
 
 import java.util.function.DoubleSupplier;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.DriveTrain;
 
@@ -30,6 +31,11 @@ public class ArcadeDrive extends Command {
 
   @Override
   public void execute() {
+    SmartDashboard.putNumber("LT", forwardSupplier.getAsDouble());
+    SmartDashboard.putNumber("RT", backwardSupplier.getAsDouble());
+    SmartDashboard.putNumber("Turn trigger", turnSupplier.getAsDouble() * 0.8);
+
+
     innerDrive.arcadeDrive(forwardSupplier.getAsDouble() - backwardSupplier.getAsDouble(),
      turnSupplier.getAsDouble() * 0.8);
   }
