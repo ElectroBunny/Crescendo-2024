@@ -34,13 +34,20 @@ public final class RobotMap {
 
     // Shooter
     public static final int SHOOTER_TALON = 20;
+    public static final double SHOOTER_LOADING_TIME = 0.5;
     public static final double REVERSED_SHOOTER_SPEED = -0.6;
     public static final double SHOOTER_SPEED = 0.8;
     public static final double AUTO_SHOOT_TIME = 1.5;
     public static final double BOOSTED_SHOOTER_SPEED = 0.6;
 
     public static final int LIMIT_SWITCH_PORT = 0;
-  
+    
+
+    // Conveyor
+    public static final int CONVEYOR_TALON = 20;
+    public static final double CONVEYOR_SPEED = 0.8;
+
+
     // Intak
     public static final int INTAKE_TALON = 2;
     public static final double AUTO_COLLECT_TIME = 2.5;

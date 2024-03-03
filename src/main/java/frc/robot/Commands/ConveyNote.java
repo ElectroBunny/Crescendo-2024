@@ -5,21 +5,21 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Shooter;
+import frc.robot.Subsystems.Conveyor;
 
-public class ShootNote extends Command {
-  private Shooter myShooter;
+public class ConveyNote extends Command {
+  private Conveyor myConveyor;
   private double speed;
 
-  public ShootNote(double speed) {
+  public ConveyNote(double speed) {
     this.speed = speed;
-    this.myShooter = Shooter.getInstance();
-    addRequirements(myShooter);
+    this.myConveyor = Conveyor.getInstance();
+    addRequirements(myConveyor);
   }
 
   @Override
   public void initialize() {
-    this.myShooter.moveShooter(speed);
+    this.myConveyor.moveConveyor(speed);
   }
 
   @Override
@@ -27,7 +27,7 @@ public class ShootNote extends Command {
 
   @Override
   public void end(boolean interrupted) {
-    this.myShooter.stopShooter();
+    this.myConveyor.stopConveyor();
   }
 
   @Override

@@ -27,6 +27,7 @@ import frc.robot.Commands.CollectNote;
 import frc.robot.Commands.DriveLeftSide;
 import frc.robot.Commands.DriveRightSide;
 import frc.robot.Commands.ShootNote;
+import frc.robot.Commands.ConveyNote;
 import frc.robot.Subsystems.DriveTrain;
 
 public class RobotContainer {
@@ -71,16 +72,16 @@ public class RobotContainer {
     OI.R1.whileTrue(new DriveRightSide());
     
     // Button for loading the shooter and conveying the note
-    // OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED).alongWith(
-    //   Commands.sequence(
-    //   new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
-    //   new CollectNote(RobotMap.INTAKE_SPEED)
-    //   )
-    // ));
+    OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED).alongWith(
+      Commands.sequence(
+      new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
+      new ConveyNote(RobotMap.SHOOTER_SPEED)
+      )
+    ));
     
-    OI.button1.whileTrue(new ShootNote(RobotMap.BOOSTED_SHOOTER_SPEED));
-    OI.button2.whileTrue(new ShootNote(RobotMap.REVERSED_SHOOTER_SPEED));
-    OI.button3.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED));
+    // OI.button1.whileTrue(new ShootNote(RobotMap.BOOSTED_SHOOTER_SPEED));
+    // OI.button2.whileTrue(new ShootNote(RobotMap.REVERSED_SHOOTER_SPEED));
+    // OI.button3.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED));
 
     OI.button4.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
     OI.button6.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));

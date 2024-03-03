@@ -11,48 +11,48 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
-public class Shooter extends SubsystemBase {
-  private WPI_TalonSRX shootingVictor;
+public class Conveyor extends SubsystemBase {
+  private WPI_TalonSRX conveyorVictor;
 
-  private static Shooter instance = null;
+  private static Conveyor instance = null;
 
-  public Shooter()
+  public Conveyor()
   {
-    this.shootingVictor = new WPI_TalonSRX(RobotMap.SHOOTER_TALON);
+    this.conveyorVictor = new WPI_TalonSRX(RobotMap.CONVEYOR_TALON);
 
-    this.shootingVictor.setNeutralMode(NeutralMode.Brake);
-    // this.shootingVictor.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
+    this.conveyorVictor.setNeutralMode(NeutralMode.Brake);
+    // this.conveyorVictor.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
   }
 
   /**
-   * This function moves the shooting motor according to a given speed.
+   * This function moves the Conveyor motor according to a given speed.
    * @param gain The speed to move the motor in(between -1 to 1)
    */
-  public void moveShooter(double gain)
+  public void moveConveyor(double gain)
   {
-    this.shootingVictor.set(gain);
-    SmartDashboard.putNumber("Shooter Voltage", shootingVictor.getMotorOutputVoltage());//shooting motor vault gets
-    SmartDashboard.putNumber("Shooter Current", shootingVictor.getSupplyCurrent());//shooting motor current gets
+    this.conveyorVictor.set(gain);
+    SmartDashboard.putNumber("Conveyor Voltage", conveyorVictor.getMotorOutputVoltage());//shooting motor vault gets
+    SmartDashboard.putNumber("Conveyor Current", conveyorVictor.getSupplyCurrent());//shooting motor current gets
   }
 
 
   /**
-   * This function stops the shooting motor.
+   * This function stops the Conveyor motor.
    */
-  public void stopShooter()
+  public void stopConveyor()
   {
-    this.shootingVictor.stopMotor();
+    this.conveyorVictor.stopMotor();
   }
 
   /**
    * This function checks if the instance is null and creates a new instance
    * @return
    */
-  public static Shooter getInstance()
+  public static Conveyor getInstance()
   {
     if(instance == null)
     {
-      instance = new Shooter();
+      instance = new Conveyor();
     }
 
     return instance;
