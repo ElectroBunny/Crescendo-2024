@@ -37,7 +37,7 @@ public final class RobotMap {
     public static final double REVERSED_SHOOTER_SPEED = -0.6;
     public static final double SHOOTER_SPEED = 0.8;
     public static final double AUTO_SHOOT_TIME = 1.5;
-    public static final double BOOSTED_SHOOTER_SPEED = 1;
+    public static final double BOOSTED_SHOOTER_SPEED = 0.6;
 
     public static final int LIMIT_SWITCH_PORT = 0;
   
