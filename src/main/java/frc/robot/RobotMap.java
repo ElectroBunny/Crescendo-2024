@@ -9,9 +9,9 @@ import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 public final class RobotMap {
     // Drive Train
     public static final int DRIVE_LEFT_MASTER  = 21;
-    public static final int DRIVE_LEFT_FOLLOWER  = 3;
+    public static final int DRIVE_LEFT_FOLLOWER  = 8;
     public static final int DRIVE_RIGHT_MASTER  = 1;
-    public static final int DRIVE_RIGHT_FOLLOWER  = 7;
+    public static final int DRIVE_RIGHT_FOLLOWER  = 30;
 
     public static final int RIGHT_ENCODER_CHANNEL_A = 1;
     public static final int RIGHT_ENCODER_CHANNEL_B = 2;
@@ -33,10 +33,10 @@ public final class RobotMap {
 
 
     // Shooter
-    public static final int SHOOTER_TALON = 20;
+    public static final int SHOOTER_TALON = 7;
     public static final double SHOOTER_LOADING_TIME = 0.5;
-    public static final double REVERSED_SHOOTER_SPEED = -0.6;
-    public static final double SHOOTER_SPEED = 0.8;
+    public static final double REVERSED_SHOOTER_SPEED = 0.6;
+    public static final double SHOOTER_SPEED = -0.75;
     public static final double AUTO_SHOOT_TIME = 1.5;
     public static final double BOOSTED_SHOOTER_SPEED = 0.6;
 
@@ -44,17 +44,17 @@ public final class RobotMap {
     
 
     // Conveyor
-    public static final int CONVEYOR_TALON = 20;
+    public static final int CONVEYOR_TALON = 3;
     public static final double CONVEYOR_SPEED = 0.8;
 
 
-    // Intak
+    // Intake
     public static final int INTAKE_TALON = 2;
     public static final double AUTO_COLLECT_TIME = 2.5;
     public static final double INTAKE_SPEED = -1;
   
     // Climber
-    public static final int CLIMBER_CONTROLLER = 0;
+    public static final int CLIMBER_TALON = 20;
     public static final double CLIMBER_SPEED = 0.7;
 
     // Buttons

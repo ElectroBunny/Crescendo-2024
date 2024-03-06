@@ -16,7 +16,7 @@ public class Climber extends SubsystemBase {
 
   public Climber() {
     // Define climber controller
-    this.climberMotor = new WPI_TalonSRX(RobotMap.CLIMBER_CONTROLLER);
+    this.climberMotor = new WPI_TalonSRX(RobotMap.CLIMBER_TALON);
     this.climberMotor.configFactoryDefault();
 
     this.climberMotor.setInverted(false);

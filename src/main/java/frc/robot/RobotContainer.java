@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Commands.ArcadeDrive;
+import frc.robot.Commands.Climb;
 // import frc.robot.Commands.Climb;
 import frc.robot.Commands.CollectNote;
 import frc.robot.Commands.DriveLeftSide;
@@ -68,14 +69,15 @@ public class RobotContainer {
     driveTrain.setDefaultCommand(new ArcadeDrive(() -> OI.getPS4LeftTriggerAxis(),
     () -> OI.getPS4RightTriggerAxis(), () -> OI.getPS4LeftX()));
 
-    OI.L1.whileTrue(new DriveLeftSide());
-    OI.R1.whileTrue(new DriveRightSide());
+    // OI.L1.whileTrue(new DriveLeftSide());
+    // OI.R1.whileTrue(new DriveRightSide());
     
     // Button for loading the shooter and conveying the note
     OI.button1.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED).alongWith(
       Commands.sequence(
       new WaitCommand(RobotMap.SHOOTER_LOADING_TIME),
-      new ConveyNote(RobotMap.SHOOTER_SPEED)
+      Commands.parallel(new ConveyNote(RobotMap.SHOOTER_SPEED), 
+      new CollectNote(RobotMap.INTAKE_SPEED))
       )
     ));
     
@@ -84,15 +86,15 @@ public class RobotContainer {
     // OI.button3.whileTrue(new ShootNote(RobotMap.SHOOTER_SPEED));
 
     OI.button4.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
-    OI.button6.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
+    OI.button3.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
 
     // OI.button3.whileTrue(new CollectNote(RobotMap.INTAKE_SPEED));
     // OI.button5.whileTrue(new CollectNote(-RobotMap.INTAKE_SPEED));
 
     // OI.button6.onTrue(new InstantCommand(() -> driveTrain.resetPose(new Pose2d(0, 0, new Rotation2d(0)))));
 
-    // OI.button4.whileTrue(new Climb(RobotMap.CLIMBER_SPEED));
-    // OI.button6.whileTrue(new Climb(-RobotMap.CLIMBER_SPEED));
+    OI.button6.whileTrue(new Climb(RobotMap.CLIMBER_SPEED));
+    OI.button5.whileTrue(new Climb(-RobotMap.CLIMBER_SPEED));
   }
 
   public void onAutoInit() {
