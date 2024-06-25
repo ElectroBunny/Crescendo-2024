@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.44,
-        "y": 7.03
+        "x": 2.437335400986592,
+        "y": 7.026252448494873
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.04,
-        "y": 7.03
+        "x": 2.037335400986592,
+        "y": 7.026252448494873
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Note1CollectionPoint"
     },
     {
       "anchor": {
@@ -25,7 +25,7 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "AmpShootingPoint"
     }
   ],
   "rotationTargets": [],
@@ -41,7 +41,7 @@
             {
               "type": "named",
               "data": {
-                "name": "Amp Shoot"
+                "name": "AutoShootNote"
               }
             }
           ]
@@ -50,8 +50,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -61,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Start1Paths",
   "previewStartingState": null,
   "useDefaultConstraints": true
 }

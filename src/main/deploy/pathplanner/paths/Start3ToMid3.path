@@ -3,36 +3,36 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.82,
-        "y": 7.7
+        "x": 0.51,
+        "y": 2.1
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.82,
-        "y": 7.2
+        "x": 1.325425210092126,
+        "y": 2.081504068221406
       },
       "isLocked": false,
-      "linkedName": "AmpShootingPoint"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.437335400986592,
-        "y": 7.026252448494873
+        "x": 3.0442883943411996,
+        "y": 1.903157691027162
       },
       "prevControl": {
-        "x": 1.937335400986592,
-        "y": 7.026252448494873
+        "x": 2.869447324545677,
+        "y": 2.7364413080514622
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Note1CollectionPoint"
+      "linkedName": "Start3MidPoint"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "CollectNote1",
+      "name": "ReleaseNote",
       "waypointRelativePos": 1.0,
       "command": {
         "type": "parallel",
@@ -41,7 +41,7 @@
             {
               "type": "named",
               "data": {
-                "name": "AutoCollectNote"
+                "name": "AutoShootNote"
               }
             }
           ]
@@ -61,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": true,
-  "folder": "Start1Paths",
+  "folder": "Start3Paths",
   "previewStartingState": null,
   "useDefaultConstraints": true
 }

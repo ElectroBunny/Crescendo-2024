@@ -66,10 +66,12 @@ public class DriveTrain extends SubsystemBase {
     this.leftMaster.setInverted(true);
     this.leftFollower.setInverted(true);  
 
-    this.rightMaster.setNeutralMode(NeutralMode.Brake);
-    this.rightFollower.setNeutralMode(NeutralMode.Brake);
-    this.leftMaster.setNeutralMode(NeutralMode.Brake);
-    this.leftFollower.setNeutralMode(NeutralMode.Brake);
+    this.rightMaster.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
+    this.rightFollower.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
+    this.leftMaster.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT);
+    this.leftFollower.configSupplyCurrentLimit(RobotMap.SHOOTER_SUPPLY_LIMIT); 
+
+    setModeBrake();
 
     // Joining masters and followers motor controllers.
     this.rightFollower.follow(this.rightMaster);
@@ -82,12 +84,12 @@ public class DriveTrain extends SubsystemBase {
     this.gyro.calibrate();
 
     // Creates the encoders
-    this.rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_CHANNEL_A, RobotMap.RIGHT_ENCODER_CHANNEL_B, true, EncodingType.k2X);
-    this.rightEncoder.setDistancePerPulse(RobotMap.DRIVE_SHAFT_PERIMETER / RobotMap.TICKS_PER_PULSE);
+    this.rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_CHANNEL_A, RobotMap.RIGHT_ENCODER_CHANNEL_B, false, EncodingType.k2X);
+    this.rightEncoder.setDistancePerPulse(RobotMap.DRIVE_WHEEL_PERIMETER/ RobotMap.ENCODER_TICKS_PER_PULSE);
     this.rightEncoder.reset();
 
-    this.leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_CHANNEL_A, RobotMap.LEFT_ENCODER_CHANNEL_B, false, EncodingType.k2X);
-    this.leftEncoder.setDistancePerPulse(RobotMap.DRIVE_SHAFT_PERIMETER / RobotMap.TICKS_PER_PULSE);
+    this.leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_CHANNEL_A, RobotMap.LEFT_ENCODER_CHANNEL_B, true, EncodingType.k2X);
+    this.leftEncoder.setDistancePerPulse(RobotMap.DRIVE_WHEEL_PERIMETER / RobotMap.ENCODER_TICKS_PER_PULSE);
     this.leftEncoder.reset();
 
     this.kinematics = new DifferentialDriveKinematics(RobotMap.ROBOT_WIDTH);
@@ -152,7 +154,7 @@ public class DriveTrain extends SubsystemBase {
       return gyro.getRotation2d();
     }
 
-    private void resetPose(Pose2d pose) {
+    public void resetPose(Pose2d pose) {
       this.odometry.resetPosition(getRotation2d(), getLeftDistance(), getRightDistance(), pose);
     }
 
@@ -182,6 +184,11 @@ public class DriveTrain extends SubsystemBase {
       this.leftMaster.set(leftSpeed * RobotMap.DRIVE_MOTORS_KV);
     }
 
+    public void resetEncoders() {
+      rightEncoder.reset();
+      leftEncoder.reset();
+    }
+
     /**
      * This function gets the object of the DriveTrain system if exists, and if not it creates a new one.
      * @return The only object of the DriveTrain system.
@@ -193,10 +200,61 @@ public class DriveTrain extends SubsystemBase {
       return instance;
     }
 
+    private void logMotors()
+    {
+      SmartDashboard.putNumber("RightMaster Voltage", rightMaster.getMotorOutputVoltage());  //rightMaster motor volt gets
+      SmartDashboard.putNumber("RightMaster Current", rightMaster.getSupplyCurrent());  //rightMaster motor current gets
+
+      SmartDashboard.putNumber("LeftMaster Voltage", leftMaster.getMotorOutputVoltage());  //leftMaster motor volt gets
+      SmartDashboard.putNumber("LeftMaster Current", leftMaster.getSupplyCurrent());  //leftMaster motor current gets
+
+      SmartDashboard.putNumber("RightFollower Voltage", rightFollower.getMotorOutputVoltage());  //rightFollower motor volt gets
+      SmartDashboard.putNumber("RightFollower Current", rightFollower.getSupplyCurrent());  //rightFollower motor current gets
+
+      SmartDashboard.putNumber("LeftFollower Voltage", leftFollower.getMotorOutputVoltage());  //leftFollower motor volt gets
+      SmartDashboard.putNumber("LeftFollower Current", leftFollower.getSupplyCurrent());  //leftFollower motor current gets
+    }
+
+    private void logPosition()
+    {
+      SmartDashboard.putNumber("X", this.odometry.getPoseMeters().getX()); // gets x position of robot
+      SmartDashboard.putNumber("Y", this.odometry.getPoseMeters().getY()); // gets y position of robot
+    }
+    
+    private void logEncoder()
+    {
+      SmartDashboard.putNumber("Right Encoder", getRightDistance());
+      SmartDashboard.putNumber("Left Encoder", getLeftDistance());
+    }
+
+    public void setModeBrake() {
+      this.rightMaster.setNeutralMode(NeutralMode.Brake);
+      this.rightFollower.setNeutralMode(NeutralMode.Brake);
+      this.leftMaster.setNeutralMode(NeutralMode.Brake);
+      this.leftFollower.setNeutralMode(NeutralMode.Brake);
+    }
+
+    public void setModeCoast() {
+      this.rightMaster.setNeutralMode(NeutralMode.Coast);
+      this.rightFollower.setNeutralMode(NeutralMode.Coast);
+      this.leftMaster.setNeutralMode(NeutralMode.Coast);
+      this.leftFollower.setNeutralMode(NeutralMode.Coast);
+    }
+
+    public void driveRightSide(double speed) {
+      this.rightMaster.set(speed);
+    }
+    
+    public void driveLeftSide(double speed) {
+      this.leftMaster.set(speed);
+    } 
+
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Gyro", gyro.getAngle());
-
     odometry.update(this.gyro.getRotation2d(), leftEncoder.getDistance(), rightEncoder.getDistance());
+    SmartDashboard.putNumber("Gyro", gyro.getAngle());
+    logMotors();
+    logPosition();
+    logEncoder();
   }
 }

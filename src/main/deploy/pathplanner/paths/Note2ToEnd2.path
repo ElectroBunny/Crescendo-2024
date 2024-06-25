@@ -3,52 +3,34 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.51,
-        "y": 7.0
+        "x": 2.47,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.91,
-        "y": 7.0
+        "x": 2.77,
+        "y": 5.55
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Note2CollectionPoint"
     },
     {
       "anchor": {
-        "x": 1.82,
-        "y": 7.7
+        "x": 4.021585587030824,
+        "y": 5.4214275847098055
       },
       "prevControl": {
-        "x": 1.846167978121472,
-        "y": 7.200685232622713
+        "x": 3.7979787892808443,
+        "y": 5.868641180209763
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AmpShootingPoint"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "ShootNote1",
-      "waypointRelativePos": 1.0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoShootNote"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 2.0,
@@ -60,8 +42,8 @@
     "rotation": 0,
     "rotateFast": false
   },
-  "reversed": false,
-  "folder": "Start1Paths",
+  "reversed": true,
+  "folder": "Start2Paths",
   "previewStartingState": null,
   "useDefaultConstraints": true
 }

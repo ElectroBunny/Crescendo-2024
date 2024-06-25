@@ -11,7 +11,11 @@ public class Robot extends TimedRobot {
   private final RobotContainer robotContainer = new RobotContainer();
 
   @Override
-  public void robotInit() {}
+  public void robotInit() {
+    robotContainer.onRobotInit();
+    robotContainer.startCamera();
+    robotContainer.logInitialize();
+  }
 
   @Override
   public void robotPeriodic() {
@@ -19,13 +23,18 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    robotContainer.onDisabledInit();
+  }
 
   @Override
   public void disabledPeriodic() {}
 
   @Override
-  public void autonomousInit() {}
+  public void autonomousInit() {
+    robotContainer.onAutoInit();
+    robotContainer.backupAutonomus();
+  }
 
   @Override
   public void autonomousPeriodic() {}

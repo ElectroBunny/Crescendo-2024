@@ -1,0 +1,25 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start2ToNote2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note2ToEnd2"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Start2Autos",
+  "choreoAuto": false
+}

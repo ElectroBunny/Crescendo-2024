@@ -1,0 +1,37 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start1ToAmp"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpToNote1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note1ToAmp"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpToNotes4-5"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Start1Autos",
+  "choreoAuto": false
+}

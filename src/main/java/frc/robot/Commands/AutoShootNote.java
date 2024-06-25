@@ -5,21 +5,24 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Conveyor;
+import frc.robot.Subsystems.Intake;
+import frc.robot.Subsystems.Shooter;
 
-public class ConveyNote extends Command {
-  private Conveyor myConveyor;
+public class AutoShootNote extends Command {
+  private Shooter myShooter;
+  private Intake intake;
   private double speed;
 
-  public ConveyNote(double speed) {
+  public AutoShootNote(double speed) {
     this.speed = speed;
-    this.myConveyor = Conveyor.getInstance();
-    addRequirements(myConveyor);
+    this.myShooter = Shooter.getInstance();
+    this.intake = Intake.getInstance();
+    addRequirements(myShooter);
   }
 
   @Override
   public void initialize() {
-    this.myConveyor.moveConveyor(speed);
+    this.myShooter.moveShooter(speed);
   }
 
   @Override
@@ -27,11 +30,11 @@ public class ConveyNote extends Command {
 
   @Override
   public void end(boolean interrupted) {
-    this.myConveyor.stopConveyor();
+    this.myShooter.stopShooter();
   }
 
   @Override
   public boolean isFinished() {
-    return false;
+    return !intake.hasGamePiece();  // Runs until the note detaches the limit switch
   }
 }
